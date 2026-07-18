@@ -330,7 +330,7 @@ export const ENGINEERING_LAB_INTRO =
 
 export const PERSONAL_PROJECTS_HEADING = 'Personal Projects';
 export const PERSONAL_PROJECTS_INTRO =
-  'A selection of personal and open-source projects spanning full-stack web applications, backend infrastructure, developer tooling and AI experiments.';
+  'A selection of personal, freelance-adjacent and open-source projects spanning full-stack web applications, backend infrastructure, developer tooling, templates and AI experiments.';
 
 export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
   {
@@ -352,7 +352,14 @@ export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
       'AI-related features also need thoughtful boundaries. The goal is not to make every screen feel magical; the goal is to use AI where it can reduce friction, support decision-making, or improve workflow speed while the core system remains understandable and auditable.',
       'Because this is professional/private work, proprietary business rules, internal architecture, client data, and implementation details are intentionally excluded. The public takeaway is the type of engineering involved: secure APIs, workflow-heavy UI, production support, and AI-assisted product functionality.',
     ],
-    flow: ['Applicant', 'Angular Dashboard', '.NET APIs', 'Workflow Rules', 'Data Store', 'AI Services'],
+    flow: [
+      'Applicant',
+      'Angular Dashboard',
+      '.NET APIs',
+      'Workflow Rules',
+      'Data Store',
+      'AI Services',
+    ],
     architecture: [
       'Angular dashboard for applicant and internal workflow experiences',
       '.NET APIs for validated, role-aware operations',
@@ -396,7 +403,14 @@ export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
       'This project is useful in a portfolio because it shows product-platform thinking: not just building an app, but designing the reusable base that future apps can inherit.',
       'The architecture is intentionally platform-oriented. The goal is not a single demo screen, but a repeatable foundation that can support new business ideas without starting from an empty repo each time.',
     ],
-    flow: ['Tenant Admin', 'Angular Portal', '.NET API', 'Auth & Roles', 'PostgreSQL', 'Billing / Flags'],
+    flow: [
+      'Tenant Admin',
+      'Angular Portal',
+      '.NET API',
+      'Auth & Roles',
+      'PostgreSQL',
+      'Billing / Flags',
+    ],
     architecture: [
       'Tenant-aware Angular portal for admin and product configuration',
       '.NET API layer enforcing tenant, role, and subscription rules',
@@ -512,24 +526,24 @@ export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
     ],
   },
   {
-    slug: 'budgetbot',
-    title: 'BudgetBot',
+    slug: 'telegram-budget-assistant',
+    title: 'Telegram Budget Assistant',
     description:
-      'An AI-powered personal finance bot that categorises transactions, tracks spending patterns and surfaces budget insights through a conversational interface. Built with Python using LLM APIs for natural language understanding.',
-    technologies: ['Python', 'LLM APIs', 'FastAPI'],
+      'An AI-powered Telegram finance assistant that categorises transactions, tracks spending patterns and surfaces budget insights through a conversational interface. Built with Python using deterministic finance logic plus LLM-assisted interpretation.',
+    technologies: ['Python', 'Telegram Bot API', 'LLM APIs', 'Finance Workflows'],
     language: 'Python',
-    githubUrl: 'https://github.com/sandeepyeg/budgetbot',
-    highlight: 'AI-powered · Personal finance',
-    role: 'AI application concept combining transaction normalization, categorization, budget rules, and conversational financial insights.',
+    githubUrl: 'https://github.com/sandeepyeg/telegram-budget-assistant',
+    highlight: 'Public · AI finance assistant',
+    role: 'AI application concept combining transaction normalization, Telegram bot interactions, categorization, budget rules, and conversational financial insights.',
     details: [
-      'BudgetBot is an AI-powered personal finance concept that uses transaction data to help categorize spending, identify patterns, and surface budget insights through a conversational interface.',
+      'Telegram Budget Assistant is an AI-powered personal finance concept that uses transaction data to help categorize spending, identify patterns, and surface budget insights through a conversational interface.',
       'The core workflow starts with importing or receiving transaction-like records. Those records need normalization before any useful categorization or analysis can happen, because financial data often arrives with inconsistent merchant names, descriptions, dates, and categories.',
       'The AI layer is useful when it supports a real workflow rather than acting as decoration. In this project, LLM APIs can help interpret transaction descriptions, answer spending questions, and explain budget patterns in natural language.',
       'A responsible version of this project needs guardrails. Personal finance data is sensitive, so the design should consider privacy, minimal data exposure, clear user consent, and careful logging that avoids leaking transaction details.',
       'The product value is in combining deterministic finance rules with AI-assisted interpretation. Budgets, categories, monthly totals, and alerts should be calculated predictably. AI can then help explain the patterns, classify messy descriptions, or answer natural-language questions.',
       'This distinction matters because financial applications should not hallucinate totals or silently invent facts. The system should ground answers in stored transactions and computed summaries, while using AI for language understanding and explanation.',
       'A strong portfolio version would show the complete loop: import sample transactions, normalize them, categorize spending, review uncertain categories, ask questions, and see grounded answers with clear caveats.',
-      'BudgetBot demonstrates how AI can sit beside traditional backend logic: ingestion, categorization, persistence, budget rules, summaries, and conversational retrieval all have distinct responsibilities.',
+      'Telegram Budget Assistant demonstrates how AI can sit beside traditional backend logic: ingestion, categorization, persistence, budget rules, summaries, and conversational retrieval all have distinct responsibilities.',
     ],
     flow: ['Transactions', 'Normalizer', 'Categorizer', 'Budget Rules', 'LLM API', 'Insights Chat'],
     architecture: [
@@ -554,6 +568,142 @@ export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
       'Add sample anonymized transaction dataset for demo mode',
       'Show source-grounded answers with transaction references',
       'Add privacy notes and logging safeguards to the README',
+    ],
+  },
+  {
+    slug: 'aspire-angular-clean-template',
+    title: 'Aspire Angular Clean Template',
+    description:
+      'A reusable .NET Aspire and Angular starter template with Clean Architecture boundaries, PostgreSQL orchestration, Identity scaffolding, Serilog, OpenTelemetry and layered test projects.',
+    technologies: ['.NET Aspire', 'Angular', 'PostgreSQL', 'OpenTelemetry', 'Serilog'],
+    language: 'C#',
+    githubUrl: 'https://github.com/sandeepyeg/aspire-angular-clean-template',
+    highlight: 'Public · Starter template',
+    role: 'Full-stack starter template designed to give new projects a production-minded foundation instead of an empty repo.',
+    details: [
+      'Aspire Angular Clean Template is a public starter template for building full-stack applications with .NET Aspire, ASP.NET Core Minimal APIs, Angular, PostgreSQL and Clean Architecture-style layering.',
+      'The project is useful because many applications repeat the same early decisions: solution structure, API boundaries, frontend setup, local orchestration, database wiring, identity scaffolding, logging, telemetry and test project organization.',
+      'Instead of treating those foundations as afterthoughts, the template brings them into the first commit. A new project can start with separate Domain, Application, Infrastructure, Web, AppHost and ServiceDefaults projects, with the Angular client living beside the API host.',
+      'The Aspire AppHost gives local development a more realistic shape by coordinating the API, PostgreSQL and dashboard diagnostics. This makes local logs, service URLs, traces and container state easier to inspect while the app is still small.',
+      'The Angular side provides a modern standalone-component baseline and generated API-client direction, so frontend screens can call typed backend contracts rather than hand-maintaining request shapes.',
+      'For portfolio purposes, the template shows engineering taste: clear boundaries, useful defaults, observability, repeatable setup, documentation and attention to what future projects need before they grow messy.',
+    ],
+    flow: ['Developer', 'AppHost', 'Web API', 'Angular UI', 'PostgreSQL', 'Telemetry'],
+    architecture: [
+      '.NET Aspire AppHost for orchestration, local service URLs and diagnostics',
+      'ASP.NET Core Web project hosting Minimal APIs and the Angular client',
+      'Domain, Application and Infrastructure layers for clean responsibility boundaries',
+      'PostgreSQL integration for realistic local persistence',
+      'Serilog and OpenTelemetry hooks for production-minded observability',
+    ],
+    keyPoints: [
+      'Reusable full-stack project foundation',
+      'Clean Architecture-inspired solution organization',
+      'Local orchestration with .NET Aspire',
+      'Observability and testing built into the template',
+    ],
+    demoValue: [
+      'Shows ability to package engineering patterns into reusable developer tooling',
+      'Communicates full-stack architecture judgment beyond one product feature',
+      'Useful as a public starter for future apps, demos and client prototypes',
+    ],
+    nextSteps: [
+      'Add a guided template usage checklist for renaming and first-product setup',
+      'Add screenshots or a short walkthrough of the Aspire dashboard and Angular app',
+      'Add GitHub Actions workflow examples for build, lint and test checks',
+    ],
+  },
+  {
+    slug: 'delivercheck-platform',
+    title: 'DeliverCheck Platform',
+    description:
+      'A delivery workflow platform template focused on driver-facing flows, operational status tracking and production-minded TypeScript application structure.',
+    technologies: ['TypeScript', 'Workflow UI', 'Operations', 'Delivery Platform'],
+    language: 'TypeScript',
+    githubUrl: 'https://github.com/sandeepyeg/delivercheck-platform',
+    highlight: 'Public · Delivery workflow',
+    role: 'Workflow application concept for delivery operations, driver-facing status updates and business process visibility.',
+    details: [
+      'DeliverCheck Platform is a public workflow project focused on delivery operations. It explores how driver-facing flows, dispatch-style statuses and business process screens can be organized into a maintainable application.',
+      'Delivery software is interesting because the workflow is always moving. A shipment, driver, customer, stop or proof-of-delivery record can change state quickly, and the UI has to make those states understandable without overwhelming the user.',
+      'The project direction emphasizes operational clarity: users need to know what is pending, active, delayed, completed or blocked. Those states should be easy to scan and consistent across the app.',
+      'A strong delivery platform also needs good boundaries between presentation and business logic. The UI can make workflows easier to use, but status transitions, validation and record ownership should be predictable and enforceable.',
+      'This project connects to the kind of business software I enjoy building: practical workflows, role-aware actions, clean screens, simple state language and data that helps people make decisions quickly.',
+      'For portfolio purposes, DeliverCheck shows that I can think beyond static pages and into operational products where timing, statuses, users and process reliability matter.',
+    ],
+    flow: [
+      'Driver',
+      'Mobile Flow',
+      'Status Update',
+      'Operations View',
+      'Delivery Record',
+      'Customer Proof',
+    ],
+    architecture: [
+      'Driver-facing workflow screens for delivery actions and status updates',
+      'Operational views for tracking work across active and completed delivery states',
+      'Status model designed around pending, active, completed and exception paths',
+      'Reusable TypeScript structure for screens, workflow state and UI composition',
+      'Room for future API, persistence and role-based access boundaries',
+    ],
+    keyPoints: [
+      'Workflow-focused product thinking',
+      'Driver and operations experience design',
+      'Status tracking and process visibility',
+      'Public project cleaned for portfolio presentation',
+    ],
+    demoValue: [
+      'Shows interest in real business operations rather than only portfolio visuals',
+      'Demonstrates how UI structure can support repeated daily workflows',
+      'Pairs well with freelance logistics client experience',
+    ],
+    nextSteps: [
+      'Add API-backed delivery records and seeded demo data',
+      'Add status-transition rules and validation tests',
+      'Add screenshots or a demo flow for driver and operations views',
+    ],
+  },
+  {
+    slug: 'jules-supervisor',
+    title: 'Jules Supervisor',
+    description:
+      'Developer tooling for supervising AI-assisted coding work, tracking automated tasks and making generated changes easier to inspect, review and trust.',
+    technologies: ['TypeScript', 'Developer Tools', 'AI Agents', 'Automation'],
+    language: 'TypeScript',
+    githubUrl: 'https://github.com/sandeepyeg/jules-supervisor',
+    highlight: 'Public · AI developer tooling',
+    role: 'AI workflow supervision tool focused on keeping automated coding work visible, reviewable and accountable.',
+    details: [
+      'Jules Supervisor is a developer tooling project focused on a problem I care about: AI-assisted coding can move fast, but the work still needs visibility, review boundaries and human ownership.',
+      'The project direction is about supervising automated coding tasks rather than blindly trusting them. A useful tool should help developers understand what the agent is doing, what changed, what assumptions were made and where review is needed.',
+      'AI coding workflows can fail in subtle ways. They can modify too much, ignore local conventions, add unnecessary abstractions, miss security concerns or create tests that only prove the generated implementation. Supervision tools should make those risks easier to notice.',
+      'The project fits my broader AI philosophy: agents are valuable when they increase momentum and context awareness, but they should not become invisible decision-makers inside the development process.',
+      'From a portfolio perspective, Jules Supervisor shows interest in developer experience, automation, code-review flow and responsible AI-assisted engineering rather than only AI chatbot features.',
+      'The most important product idea is trust through inspectability. Developers should be able to trace the task, review the diff, understand the plan and decide whether the final change belongs in the codebase.',
+    ],
+    flow: ['Developer', 'AI Task', 'Supervisor', 'Change Review', 'Decision', 'Repository'],
+    architecture: [
+      'Task tracking layer for AI-assisted coding work and execution state',
+      'Review-oriented interface for inspecting generated changes and assumptions',
+      'Workflow boundaries around task status, review outcome and repository impact',
+      'Developer-tooling mindset focused on transparency and accountability',
+      'Future room for integrations with GitHub, local repositories and CI signals',
+    ],
+    keyPoints: [
+      'AI-assisted developer tooling',
+      'Reviewability and task supervision',
+      'Responsible automation workflow',
+      'Developer experience beyond ordinary CRUD apps',
+    ],
+    demoValue: [
+      'Shows thoughtful AI engineering beyond prompt demos',
+      'Connects directly to modern coding-agent workflows',
+      'Demonstrates concern for review, safety and maintainability',
+    ],
+    nextSteps: [
+      'Add GitHub issue or pull-request integration ideas',
+      'Add screenshots showing task state and review flow',
+      'Document what kinds of AI work should require extra review',
     ],
   },
 ];
@@ -815,7 +965,12 @@ export const BLOG_TOPICS: readonly BlogTopic[] = [
     category: 'Backend Design',
     summary:
       'Clean Architecture can improve maintainability, but too many layers can become ceremony when the project does not need them.',
-    points: ['Thin controllers', 'Clear business logic', 'Earned abstractions', 'Behaviour-focused tests'],
+    points: [
+      'Thin controllers',
+      'Clear business logic',
+      'Earned abstractions',
+      'Behaviour-focused tests',
+    ],
     details: [
       'Clean Architecture can be a helpful discipline, but I do not believe every project needs the same number of layers, interfaces, repositories, commands, handlers, and mappings.',
       'The goal should be clear responsibility and testable business logic. If the codebase becomes harder to understand because the pattern was applied mechanically, the architecture is not helping.',
