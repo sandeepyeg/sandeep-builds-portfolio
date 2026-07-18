@@ -1,0 +1,120 @@
+.hero {
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+  padding-block: var(--space-3xl) var(--space-2xl);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  min-height: calc(100dvh - var(--header-height));
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.hero__eyebrow {
+  color: var(--fg-muted);
+}
+
+.hero__name {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  max-width: 16ch;
+  margin-top: var(--space-sm);
+}
+
+.hero__supporting {
+  color: var(--fg-muted);
+  max-width: 52ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.hero__availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: var(--space-md);
+  font-size: var(--text-small);
+  color: var(--fg-muted);
+}
+
+.hero__pulse {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--color-lime);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-lime) 70%, transparent);
+  animation: hero-pulse 2.4s infinite;
+}
+
+@keyframes hero-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-lime) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.hero__visual {
+  color: color-mix(in srgb, var(--color-paper) 70%, transparent);
+}
+
+.hero__svg {
+  width: 100%;
+  height: auto;
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: var(--space-lg);
+  }
+  .hero__visual {
+    order: -1;
+  }
+  .hero__svg {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__visual {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__pulse {
+    animation: none;
+  }
+}

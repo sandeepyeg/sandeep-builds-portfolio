@@ -1,12 +1,22 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PageShell } from './layout/page-shell/page-shell';
+import { MetadataService } from './core/services/metadata.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  imports: [RouterOutlet, PageShell],
+  template: `
+    <app-page-shell>
+      <router-outlet />
+    </app-page-shell>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected readonly title = signal('sandeep-builds');
+  private readonly metadata = inject(MetadataService);
+
+  constructor() {
+    this.metadata.setDefaultMetadata();
+  }
 }

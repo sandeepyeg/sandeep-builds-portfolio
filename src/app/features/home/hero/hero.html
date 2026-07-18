@@ -1,0 +1,82 @@
+<section class="hero" id="top" data-theme="ink">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow eyebrow">{{ hero.statusLine }}</p>
+
+      <h1 class="hero__name">
+        <app-animated-heading [text]="hero.nameLines[0]" [display]="true" />
+        <app-animated-heading [text]="hero.nameLines[1]" [display]="true" />
+      </h1>
+
+      <p class="hero__headline">{{ hero.headline }}</p>
+      <p class="hero__supporting lead">{{ hero.supporting }}</p>
+
+      <div class="hero__actions">
+        <a routerLink="/" fragment="work" class="btn btn--primary">
+          <span>View Selected Work</span>
+        </a>
+        <app-button-link
+          label="GitHub"
+          [href]="profile.githubUrl"
+          [external]="true"
+          variant="ghost"
+        />
+        <app-button-link
+          label="LinkedIn"
+          [href]="profile.linkedinUrl"
+          [external]="true"
+          variant="ghost"
+        />
+        @if (hasResume) {
+          <app-button-link label="Download Resume" [href]="profile.resumePath" variant="ghost" />
+        }
+      </div>
+
+      <p class="hero__availability">
+        <span class="hero__pulse" aria-hidden="true"></span>
+        {{ hero.availability }}
+      </p>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <svg viewBox="0 0 420 420" class="hero__svg" preserveAspectRatio="xMidYMid meet">
+        <g class="hero__nodes" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="40" y="40" width="96" height="56" rx="10" />
+          <rect x="284" y="40" width="96" height="56" rx="10" />
+          <rect x="40" y="182" width="96" height="56" rx="10" />
+          <rect x="284" y="182" width="96" height="56" rx="10" />
+          <rect x="162" y="324" width="96" height="56" rx="10" />
+        </g>
+        <g
+          class="hero__links"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-dasharray="5 5"
+          opacity="0.7"
+        >
+          <path d="M136 68 L284 68" />
+          <path d="M88 96 L88 182" />
+          <path d="M332 96 L332 182" />
+          <path d="M136 210 L210 324" />
+          <path d="M284 210 L210 324" />
+        </g>
+        <g
+          class="hero__labels"
+          font-family="Inter, sans-serif"
+          font-size="11"
+          font-weight="600"
+          fill="currentColor"
+        >
+          <text x="88" y="73" text-anchor="middle">API</text>
+          <text x="332" y="73" text-anchor="middle">UI</text>
+          <text x="88" y="215" text-anchor="middle">QUEUE</text>
+          <text x="332" y="215" text-anchor="middle">WORKER</text>
+          <text x="210" y="357" text-anchor="middle">CLOUD</text>
+        </g>
+        <circle cx="210" cy="120" r="5" fill="var(--color-lime)" />
+        <circle cx="210" cy="260" r="5" fill="var(--color-coral)" />
+      </svg>
+    </div>
+  </div>
+</section>

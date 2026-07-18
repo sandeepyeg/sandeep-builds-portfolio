@@ -1,0 +1,107 @@
+<article class="case-study" data-theme="ink">
+  <header class="case-study__header">
+    <div class="container container-narrow">
+      <a routerLink="/" [fragment]="'work'" class="case-study__back">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19 12H5M11 18l-6-6 6-6"
+          />
+        </svg>
+        Back to Selected Work
+      </a>
+      <p class="eyebrow case-study__label">{{ caseStudy.label }}</p>
+      <h1 class="case-study__title">{{ caseStudy.title }}</h1>
+      <p class="case-study__note">{{ caseStudy.sanitizationNote }}</p>
+    </div>
+  </header>
+
+  <section class="section case-study__overview">
+    <div class="container container-narrow">
+      <p class="lead">{{ caseStudy.overview }}</p>
+    </div>
+  </section>
+
+  @for (section of caseStudy.sections; track section.id) {
+    <section class="section case-study__section" [id]="section.id">
+      <div class="container container-narrow">
+        <h2 class="case-study__h2">{{ section.heading }}</h2>
+        @for (paragraph of section.paragraphs; track $index) {
+          <p class="case-study__p">{{ paragraph }}</p>
+        }
+        @if (section.bullets?.length) {
+          <ul role="list" class="case-study__bullets">
+            @for (bullet of section.bullets; track bullet) {
+              <li>{{ bullet }}</li>
+            }
+          </ul>
+        }
+      </div>
+    </section>
+  }
+
+  <section class="section case-study__architecture" id="architecture">
+    <div class="container container-narrow">
+      <h2 class="case-study__h2">Conceptual Architecture</h2>
+      <div class="architecture" aria-hidden="true">
+        <svg viewBox="0 0 480 520" class="architecture__svg" preserveAspectRatio="xMidYMid meet">
+          <g fill="none" stroke="currentColor" stroke-width="1.5">
+            @for (node of flow; track node; let i = $index) {
+              <rect x="120" [attr.y]="30 + i * 80" width="240" height="54" rx="10" />
+            }
+          </g>
+          <g
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-dasharray="5 5"
+            opacity="0.7"
+          >
+            @for (node of flow; track node; let i = $index) {
+              @if (!$last) {
+                <path [attr.d]="'M240 ' + (84 + i * 80) + ' L240 ' + (110 + i * 80)" />
+              }
+            }
+          </g>
+          <g font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="currentColor">
+            @for (node of flow; track node; let i = $index) {
+              <text x="240" [attr.y]="62 + i * 80" text-anchor="middle">{{ node }}</text>
+            }
+          </g>
+        </svg>
+      </div>
+      <p class="case-study__note">
+        Conceptual architecture only. Proprietary details have been intentionally omitted.
+      </p>
+    </div>
+  </section>
+
+  <section class="section case-study__tech" id="technology">
+    <div class="container container-narrow">
+      <h2 class="case-study__h2">Technology</h2>
+      <app-technology-list [technologies]="caseStudy.technology" />
+    </div>
+  </section>
+
+  <section class="section case-study__lessons" id="lessons">
+    <div class="container container-narrow">
+      <h2 class="case-study__h2">Lessons</h2>
+      <ol role="list" class="case-study__lessons-list">
+        @for (lesson of caseStudy.lessons; track lesson) {
+          <li>{{ lesson }}</li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <nav class="case-study__nav" aria-label="Case study navigation">
+    <div class="container case-study__nav-inner">
+      <a routerLink="/" [fragment]="'work'" class="case-study__back">Back to Selected Work</a>
+      <a routerLink="/" [fragment]="'contact'" class="btn btn--ghost">Contact</a>
+    </div>
+  </nav>
+</article>

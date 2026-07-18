@@ -1,0 +1,96 @@
+<header class="site-header" [class]="headerClass()">
+  <div class="site-header__inner container">
+    <a
+      routerLink="/"
+      class="site-header__brand"
+      (click)="closeMenu()"
+      aria-label="Sandeep Builds — home"
+    >
+      <span class="site-header__monogram">{{ profile.monogram }}</span>
+      <span class="site-header__wordmark">Sandeep Builds</span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary">
+      <ul role="list" class="site-header__nav-list">
+        @for (item of navItems; track item.fragment) {
+          <li>
+            <a
+              routerLink="/"
+              [fragment]="item.fragment"
+              class="site-header__nav-link"
+              [attr.aria-current]="activeSection() === item.fragment ? 'true' : null"
+              (click)="onNavClick()"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+        <li>
+          <a
+            [href]="profile.githubUrl"
+            class="site-header__nav-link site-header__nav-link--external"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7 17 17 7M9 7h8v8"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button
+      type="button"
+      class="site-header__menu-btn"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-controls]="menuId"
+      (click)="toggleMenu()"
+    >
+      <span class="visually-hidden">Toggle navigation menu</span>
+      <span class="site-header__menu-icon" [class.is-open]="menuOpen()" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div
+    [id]="menuId"
+    class="mobile-menu"
+    [class.is-open]="menuOpen()"
+    [attr.inert]="menuOpen() ? null : true"
+  >
+    <ul role="list" class="mobile-menu__list">
+      @for (item of navItems; track item.fragment) {
+        <li>
+          <a
+            routerLink="/"
+            [fragment]="item.fragment"
+            class="mobile-menu__link"
+            [attr.aria-current]="activeSection() === item.fragment ? 'true' : null"
+            (click)="onNavClick()"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+      <li>
+        <a
+          [href]="profile.githubUrl"
+          class="mobile-menu__link"
+          target="_blank"
+          rel="noopener noreferrer"
+          (click)="onNavClick()"
+        >
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

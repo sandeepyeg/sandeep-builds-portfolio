@@ -1,0 +1,140 @@
+.case-study {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.case-study__header {
+  padding-block: var(--space-2xl) var(--space-xl);
+  border-bottom: var(--border-subtle);
+}
+
+.case-study__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-muted-dark);
+  margin-bottom: var(--space-md);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.case-study__back:hover {
+  color: var(--color-lime);
+}
+
+.case-study__label {
+  color: var(--color-lime);
+}
+
+.case-study__title {
+  font-size: var(--text-display-md);
+  max-width: 16ch;
+  margin-block: var(--space-xs);
+}
+
+.case-study__note {
+  font-size: var(--text-small);
+  color: var(--color-muted-dark);
+  font-style: italic;
+}
+
+.case-study__overview {
+  padding-block: var(--space-xl);
+}
+
+.case-study__h2 {
+  font-size: var(--text-heading-sm);
+  margin-bottom: var(--space-md);
+}
+
+.case-study__p {
+  color: var(--color-muted-dark);
+  font-size: var(--text-body-lg);
+  max-width: 64ch;
+  margin-bottom: var(--space-sm);
+}
+
+.case-study__bullets {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-sm) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.5rem 1.5rem;
+}
+
+.case-study__bullets li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--color-paper);
+  font-size: var(--text-body);
+}
+
+.case-study__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-cobalt);
+  border-radius: 1px;
+}
+
+.case-study__architecture {
+  background: var(--color-ink-soft);
+}
+
+.architecture {
+  color: color-mix(in srgb, var(--color-paper) 80%, transparent);
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.architecture__svg {
+  width: 100%;
+  height: auto;
+}
+
+.case-study__lessons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: lesson;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.case-study__lessons-list li {
+  counter-increment: lesson;
+  position: relative;
+  padding-left: 3rem;
+  font-size: var(--text-body-lg);
+  color: var(--color-paper);
+  min-height: 2rem;
+}
+
+.case-study__lessons-list li::before {
+  content: counter(lesson, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-lime);
+}
+
+.case-study__nav {
+  border-top: var(--border-subtle);
+  padding-block: var(--space-xl);
+}
+
+.case-study__nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}

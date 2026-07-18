@@ -1,0 +1,58 @@
+// Motion utilities and reduced-motion guards.
+// JS-driven animation (GSAP/Lenis) lives in services; this file provides
+// the CSS baseline and reveal states used with/without JS.
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.clip-reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-slow) var(--ease-out);
+}
+
+.clip-reveal.is-visible {
+  clip-path: inset(0 0 0% 0);
+}
+
+// Marquee animation (paused for reduced motion).
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .clip-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

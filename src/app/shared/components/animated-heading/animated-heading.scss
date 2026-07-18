@@ -1,0 +1,29 @@
+.clip {
+  display: block;
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-slow) var(--ease-out);
+}
+
+.clip.is-visible {
+  clip-path: inset(0 0 0% 0);
+}
+
+.clip__inner {
+  display: block;
+  will-change: transform;
+}
+
+.clip--display .clip__inner {
+  font-family: var(--font-display);
+  font-size: var(--text-display-xl);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: var(--tracking-tight);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clip {
+    clip-path: none;
+  }
+}

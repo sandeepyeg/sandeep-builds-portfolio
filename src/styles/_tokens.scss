@@ -1,0 +1,105 @@
+// Design tokens for Sandeep Builds — engineering editorial style.
+// Colors, fluid typography, spacing, layout, motion.
+
+:root {
+  // ── Color system ───────────────────────────────────────────────
+  --color-ink: #0b0d10;
+  --color-ink-soft: #15191f;
+  --color-paper: #f3f0e8;
+  --color-paper-soft: #e7e2d7;
+  --color-cobalt: #596cff;
+  --color-lime: #c7f75b;
+  --color-coral: #ff7667;
+  --color-muted-dark: #9da4ae;
+  --color-muted-light: #5d6269;
+
+  // Semantic aliases (resolved per theme via [data-theme])
+  --bg: var(--color-ink);
+  --bg-soft: var(--color-ink-soft);
+  --fg: var(--color-paper);
+  --fg-muted: var(--color-muted-dark);
+  --accent: var(--color-cobalt);
+  --accent-2: var(--color-lime);
+  --on-accent: #0b0d10;
+
+  // ── Typography ─────────────────────────────────────────────────
+  --font-display: 'Space Grotesk Variable', sans-serif;
+  --font-body: 'Inter Variable', sans-serif;
+
+  --text-display-xl: clamp(4rem, 11vw, 10rem);
+  --text-display-lg: clamp(3rem, 8vw, 7rem);
+  --text-display-md: clamp(2.5rem, 6vw, 5rem);
+  --text-heading: clamp(2rem, 5vw, 4.5rem);
+  --text-heading-sm: clamp(1.5rem, 3vw, 2.5rem);
+  --text-eyebrow: clamp(0.8125rem, 1.2vw, 0.9375rem);
+  --text-body-lg: clamp(1.125rem, 1.8vw, 1.5rem);
+  --text-body: clamp(1rem, 1.2vw, 1.125rem);
+  --text-small: 0.875rem;
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.15;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.02em;
+  --tracking-loose: 0.18em;
+
+  // ── Spacing ────────────────────────────────────────────────────
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: clamp(6rem, 12vw, 11rem);
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --container-max: 1440px;
+  --container-narrow: 860px;
+
+  // ── Layout ─────────────────────────────────────────────────────
+  --header-height: 4.5rem;
+
+  // ── Motion ─────────────────────────────────────────────────────
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.2s;
+  --dur-base: 0.4s;
+  --dur-slow: 0.8s;
+
+  // ── Surface ────────────────────────────────────────────────────
+  --radius: 0.75rem;
+  --radius-lg: 1.25rem;
+  --border-subtle: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+// Section theme overrides. Applied on <main data-theme="...">
+[data-theme='ink'] {
+  --bg: var(--color-ink);
+  --bg-soft: var(--color-ink-soft);
+  --fg: var(--color-paper);
+  --fg-muted: var(--color-muted-dark);
+  --accent: var(--color-cobalt);
+  --accent-2: var(--color-lime);
+  --on-accent: #0b0d10;
+}
+
+[data-theme='paper'] {
+  --bg: var(--color-paper);
+  --bg-soft: var(--color-paper-soft);
+  --fg: var(--color-ink);
+  --fg-muted: var(--color-muted-light);
+  --accent: var(--color-cobalt);
+  --accent-2: var(--color-coral);
+  --on-accent: #ffffff;
+}
+
+[data-theme='cobalt'] {
+  --bg: var(--color-cobalt);
+  --bg-soft: #4858e0;
+  --fg: #ffffff;
+  --fg-muted: rgba(255, 255, 255, 0.78);
+  --accent: var(--color-lime);
+  --accent-2: var(--color-paper);
+  --on-accent: #0b0d10;
+}

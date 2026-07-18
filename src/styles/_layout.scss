@@ -1,0 +1,55 @@
+// Layout primitives: container, section rhythm, grid helpers.
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container-narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding-block: var(--space-3xl);
+  position: relative;
+}
+
+.section--tight {
+  padding-block: var(--space-2xl);
+}
+
+.stack > * + * {
+  margin-top: var(--space-sm);
+}
+
+.stack-lg > * + * {
+  margin-top: var(--space-lg);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.cluster-between {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  border: 0;
+}

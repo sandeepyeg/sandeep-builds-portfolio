@@ -1,0 +1,24 @@
+.not-found {
+  min-height: calc(100dvh - var(--header-height));
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  color: var(--fg);
+  text-align: center;
+}
+
+.not-found__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.not-found__title {
+  font-size: var(--text-heading);
+  max-width: 16ch;
+}
+
+.not-found__copy {
+  color: var(--fg-muted);
+}

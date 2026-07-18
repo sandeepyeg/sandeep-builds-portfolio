@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b0d10"/>
+  <rect x="60" y="60" width="1080" height="510" rx="24" fill="none" stroke="#596cff" stroke-width="2" opacity="0.3"/>
+  <g transform="translate(80, 80)">
+    <rect x="0" y="0" width="120" height="60" rx="12" fill="none" stroke="#596cff" stroke-width="2" opacity="0.6"/>
+    <text x="60" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#9da4ae">API</text>
+    <rect x="240" y="0" width="120" height="60" rx="12" fill="none" stroke="#596cff" stroke-width="2" opacity="0.6"/>
+    <text x="300" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#9da4ae">UI</text>
+    <rect x="120" y="120" width="120" height="60" rx="12" fill="none" stroke="#c7f75b" stroke-width="2" opacity="0.8"/>
+    <text x="180" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#9da4ae">WORKER</text>
+    <line x1="120" y1="30" x2="240" y2="30" stroke="#596cff" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
+    <line x1="180" y1="60" x2="180" y2="120" stroke="#c7f75b" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
+  </g>
+  <text x="600" y="260" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="96" font-weight="700" fill="#f3f0e8" letter-spacing="-2">SANDEEP JOHAL</text>
+  <text x="600" y="320" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="600" fill="#596cff" letter-spacing="4">FULL-STACK &middot; CLOUD &middot; AI</text>
+  <text x="600" y="380" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#9da4ae">.NET &middot; Angular &middot; TypeScript &middot; Azure &middot; AWS &middot; Docker</text>
+  <text x="600" y="480" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#c7f75b">sandeepbuilds.com</text>
+  <line x1="300" y1="510" x2="900" y2="510" stroke="#596cff" stroke-width="1.5" opacity="0.3"/>
+</svg>

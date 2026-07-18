@@ -1,0 +1,57 @@
+// Base typography. Font @font-face declarations come from Fontsource bundles
+// loaded via angular.json. Here we set the document defaults.
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 400;
+  color: var(--fg);
+  background: var(--bg);
+  transition:
+    background-color var(--dur-slow) var(--ease-in-out),
+    color var(--dur-slow) var(--ease-in-out);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+  max-width: 70ch;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-loose);
+  color: var(--fg-muted);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-display-lg);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.lead {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-snug);
+  color: var(--fg);
+  max-width: 60ch;
+}

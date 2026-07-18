@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+// Global entry — imports the design system layers in order.
+@use './styles/reset';
+@use './styles/tokens';
+@use './styles/typography';
+@use './styles/layout';
+@use './styles/buttons';
+@use './styles/utilities';
+@use './styles/motion';

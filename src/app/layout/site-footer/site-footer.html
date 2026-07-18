@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="site-footer__credit">Built by Sandeep Johal</p>
+      <p class="site-footer__location">{{ profile.location }}</p>
+    </div>
+
+    <nav class="site-footer__links" aria-label="Footer">
+      <a [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+      <a [href]="profile.linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a [href]="profile.githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+
+    <button type="button" class="site-footer__top" (click)="scrollToTop()">
+      Back to top
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 19V5M5 12l7-7 7 7"
+        />
+      </svg>
+    </button>
+  </div>
+  <p class="site-footer__legal">© {{ year }} Sandeep Johal · {{ profile.domain }}</p>
+</footer>

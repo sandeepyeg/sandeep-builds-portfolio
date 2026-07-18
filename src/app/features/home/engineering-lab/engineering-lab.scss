@@ -1,0 +1,23 @@
+.lab {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.lab__intro {
+  color: var(--fg-muted);
+  margin-bottom: var(--space-xl);
+  max-width: 56ch;
+}
+
+.lab__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.lab__note {
+  margin-top: var(--space-lg);
+  font-size: var(--text-small);
+  color: var(--fg-muted);
+  max-width: 70ch;
+}

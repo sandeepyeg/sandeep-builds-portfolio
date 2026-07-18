@@ -1,0 +1,110 @@
+.experience {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--space-md);
+  padding-bottom: var(--space-xl);
+  position: relative;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: 1.16rem;
+  top: 1.5rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+.timeline__item:last-child::before {
+  display: none;
+}
+
+.timeline__marker {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.4rem;
+}
+
+.timeline__dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--color-ink-soft);
+  border: 2px solid var(--fg-muted);
+}
+
+.timeline__item--current .timeline__dot {
+  background: var(--color-lime);
+  border-color: var(--color-lime);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-lime) 25%, transparent);
+}
+
+.timeline__period {
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-loose);
+  color: var(--fg-muted);
+}
+
+.timeline__role {
+  font-size: var(--text-heading-sm);
+  margin-top: 0.25rem;
+}
+
+.timeline__company {
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.timeline__desc {
+  color: var(--fg-muted);
+  margin-top: var(--space-xs);
+  max-width: 64ch;
+}
+
+.education {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: var(--border-subtle);
+}
+
+.education__list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-sm) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.education__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.education__qual {
+  font-weight: 600;
+  font-size: var(--text-body);
+}
+
+.education__inst {
+  color: var(--fg-muted);
+  font-size: var(--text-small);
+}
