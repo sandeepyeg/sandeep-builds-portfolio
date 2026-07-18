@@ -22,6 +22,10 @@ export interface PersonalProject {
   readonly technologies: readonly string[];
   readonly language: string;
   readonly githubUrl?: string; // omit for private/professional projects
+  readonly sourceLinks?: readonly {
+    readonly label: string;
+    readonly url: string;
+  }[];
   readonly isPrivate?: boolean;
   readonly highlight?: string; // short impact statement shown as accent pill
   readonly details?: readonly string[];

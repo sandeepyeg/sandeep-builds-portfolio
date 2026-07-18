@@ -344,25 +344,29 @@ gsap.registerPlugin(ScrollTrigger);
             </div>
 
             <footer class="project-modal__footer">
-              @if (project.githubUrl) {
-                <a
-                  class="btn btn--ghost"
-                  [href]="project.githubUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 17 17 7M9 7h8v8"
-                    />
-                  </svg>
-                </a>
+              @if (getSourceLinks(project).length) {
+                <div class="project-modal__links" aria-label="Project source links">
+                  @for (link of getSourceLinks(project); track link.url) {
+                    <a
+                      class="btn btn--ghost"
+                      [href]="link.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {{ link.label }}
+                      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M7 17 17 7M9 7h8v8"
+                        />
+                      </svg>
+                    </a>
+                  }
+                </div>
               } @else {
                 <p class="project-modal__footer-note">Private or sanitized project</p>
               }
@@ -453,6 +457,14 @@ export class PersonalProjects {
     const midX = startX + 12;
 
     return `M${startX} ${startY} C${midX} ${startY}, ${midX} ${endY}, ${endX} ${endY}`;
+  }
+
+  protected getSourceLinks(project: PersonalProject): readonly { label: string; url: string }[] {
+    if (project.sourceLinks?.length) {
+      return project.sourceLinks;
+    }
+
+    return project.githubUrl ? [{ label: 'GitHub', url: project.githubUrl }] : [];
   }
 
   @HostListener('document:keydown.escape')

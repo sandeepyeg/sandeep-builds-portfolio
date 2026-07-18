@@ -537,6 +537,12 @@
   white-space: normal;
 }
 
+.project-modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
 .project-modal__footer-note {
   color: var(--color-muted-dark);
   font-size: var(--text-small);
