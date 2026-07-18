@@ -28,9 +28,9 @@ export const SITE_PROFILE: SiteProfile = {
 export const NAV_ITEMS: readonly NavItem[] = [
   { label: 'About', fragment: 'about' },
   { label: 'Work', fragment: 'work' },
+  { label: 'Experience', fragment: 'experience' },
   { label: 'Projects', fragment: 'projects' },
   { label: 'Freelance', fragment: 'freelance' },
-  { label: 'Experience', fragment: 'experience' },
   { label: 'Contact', fragment: 'contact' },
 ];
 

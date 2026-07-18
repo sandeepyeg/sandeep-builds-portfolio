@@ -17,10 +17,10 @@ import { Contact } from './contact/contact';
     Marquee,
     Introduction,
     FeaturedWork,
-    PersonalProjects,
-    Freelance,
     Capabilities,
     Experience,
+    PersonalProjects,
+    Freelance,
     EngineeringLab,
     Contact,
   ],
@@ -29,10 +29,10 @@ import { Contact } from './contact/contact';
     <app-marquee />
     <app-introduction />
     <app-featured-work />
-    <app-personal-projects />
-    <app-freelance />
     <app-capabilities />
     <app-experience />
+    <app-personal-projects />
+    <app-freelance />
     <app-engineering-lab />
     <app-contact />
   `,
