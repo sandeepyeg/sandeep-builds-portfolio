@@ -69,12 +69,19 @@ import { ScrollService } from '../../../core/services/scroll.service';
           role="dialog"
           aria-modal="true"
           aria-labelledby="blog-modal-title"
+          tabindex="-1"
           (click)="closeTopic()"
+          (keydown.escape)="closeTopic()"
           (wheel)="onTopicWheel($event)"
           (touchstart)="onTopicTouchStart($event)"
           (touchmove)="onTopicTouchMove($event)"
         >
-          <div class="blog-modal__panel" (click)="$event.stopPropagation()">
+          <div
+            class="blog-modal__panel"
+            tabindex="-1"
+            (click)="$event.stopPropagation()"
+            (keydown.escape)="closeTopic()"
+          >
             <header class="blog-modal__header">
               <div>
                 <p class="eyebrow blog-modal__eyebrow">{{ topic.category }}</p>

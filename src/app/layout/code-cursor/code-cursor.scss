@@ -29,7 +29,11 @@
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
   background:
-    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 10%, transparent) 0 20%, transparent 48%),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent-2) 10%, transparent) 0 20%,
+      transparent 48%
+    ),
     conic-gradient(
       from var(--cursor-spin),
       transparent,
@@ -89,18 +93,14 @@
   border-radius: 50%;
   background: color-mix(in srgb, var(--accent) 70%, white);
   opacity: 0.54;
-  transform:
-    rotate(calc(var(--cursor-spin) + var(--i) * 47deg))
-    translateX(0.62rem);
+  transform: rotate(calc(var(--cursor-spin) + var(--i) * 47deg)) translateX(0.62rem);
   animation: cursor-trail 0.9s ease-in-out infinite;
   animation-delay: var(--delay);
 }
 
 .code-cursor__trail:nth-of-type(2n) {
   background: var(--color-lime);
-  transform:
-    rotate(calc(var(--cursor-spin) + var(--i) * 51deg))
-    translateX(0.94rem)
+  transform: rotate(calc(var(--cursor-spin) + var(--i) * 51deg)) translateX(0.94rem)
     translateY(-0.22rem);
 }
 
@@ -109,9 +109,7 @@
   height: 1px;
   border-radius: 999px;
   background: var(--color-coral);
-  transform:
-    rotate(calc(var(--cursor-spin) + var(--i) * 39deg))
-    translateX(1.12rem)
+  transform: rotate(calc(var(--cursor-spin) + var(--i) * 39deg)) translateX(1.12rem)
     translateY(0.18rem);
 }
 
@@ -141,10 +139,7 @@
   box-shadow:
     0 5px 16px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transform:
-    rotate(var(--angle))
-    translateX(var(--radius))
-    rotate(calc(var(--angle) * -1));
+  transform: rotate(var(--angle)) translateX(var(--radius)) rotate(calc(var(--angle) * -1));
   animation: token-float 1.7s ease-in-out infinite;
   animation-delay: calc(var(--i) * -0.18s);
   transition:

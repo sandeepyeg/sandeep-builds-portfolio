@@ -122,12 +122,19 @@ gsap.registerPlugin(ScrollTrigger);
           role="dialog"
           aria-modal="true"
           aria-labelledby="project-modal-title"
+          tabindex="-1"
           (click)="closeProject()"
+          (keydown.escape)="closeProject()"
           (wheel)="onProjectWheel($event)"
           (touchstart)="onProjectTouchStart($event)"
           (touchmove)="onProjectTouchMove($event)"
         >
-          <div class="project-modal__panel" (click)="$event.stopPropagation()">
+          <div
+            class="project-modal__panel"
+            tabindex="-1"
+            (click)="$event.stopPropagation()"
+            (keydown.escape)="closeProject()"
+          >
             <header class="project-modal__header">
               <div>
                 <p class="eyebrow project-modal__eyebrow">{{ project.highlight }}</p>
@@ -214,10 +221,7 @@ gsap.registerPlugin(ScrollTrigger);
                       >
                         @for (node of project.flow; track node; let i = $index) {
                           @if (!$last) {
-                            <path
-                              [attr.d]="flowPath(i)"
-                              class="project-flow__path"
-                            />
+                            <path [attr.d]="flowPath(i)" class="project-flow__path" />
                           }
                         }
                       </g>
@@ -332,8 +336,8 @@ gsap.registerPlugin(ScrollTrigger);
                   </ul>
                   <p>
                     The stack is presented as a signal of the project's engineering direction:
-                    backend contracts, frontend workflows, persistence, integrations, deployment,
-                    or AI capabilities depending on the project.
+                    backend contracts, frontend workflows, persistence, integrations, deployment, or
+                    AI capabilities depending on the project.
                   </p>
                 </div>
               </section>

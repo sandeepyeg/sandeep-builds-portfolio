@@ -113,12 +113,19 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby="case-modal-title"
+      tabindex="-1"
       (click)="closeCaseStudy()"
+      (keydown.escape)="closeCaseStudy()"
       (wheel)="onCaseStudyWheel($event)"
       (touchstart)="onCaseStudyTouchStart($event)"
       (touchmove)="onCaseStudyTouchMove($event)"
     >
-      <div class="case-modal__panel" (click)="$event.stopPropagation()">
+      <div
+        class="case-modal__panel"
+        tabindex="-1"
+        (click)="$event.stopPropagation()"
+        (keydown.escape)="closeCaseStudy()"
+      >
         <header class="case-modal__header">
           <div>
             <p class="eyebrow case-modal__eyebrow">{{ project().label }}</p>

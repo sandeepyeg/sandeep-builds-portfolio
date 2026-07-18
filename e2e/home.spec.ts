@@ -10,7 +10,7 @@ test('main heading is visible', async ({ page }) => {
   const heading = page.locator('h1');
   await expect(heading).toBeVisible();
   await expect(heading).toContainText('SANDEEP');
-  await expect(heading).toContainText('SINGH');
+  await expect(heading).toContainText('JOHAL');
 });
 
 test('navigation links reach correct sections', async ({ page }) => {
