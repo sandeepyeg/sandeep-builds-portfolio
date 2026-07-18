@@ -58,17 +58,23 @@ export class PageShell {
   }
 
   private setupThemeTransitions(): void {
-    const sections = document.querySelectorAll('section[data-theme]');
-    sections.forEach((section) => {
+    const sections = Array.from(document.querySelectorAll('section[data-theme]'));
+    sections.forEach((section, index) => {
       const theme = section.getAttribute('data-theme');
       if (!theme) return;
 
       ScrollTrigger.create({
         trigger: section,
         start: 'top 50%',
-        end: 'bottom 50%',
         onEnter: () => this.currentTheme.set(theme),
-        onEnterBack: () => this.currentTheme.set(theme),
+        onLeaveBack: () => {
+          if (index > 0) {
+            const prevTheme = sections[index - 1].getAttribute('data-theme');
+            if (prevTheme) {
+              this.currentTheme.set(prevTheme);
+            }
+          }
+        },
       });
     });
   }

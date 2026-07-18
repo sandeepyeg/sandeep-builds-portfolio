@@ -18,20 +18,30 @@ gsap.registerPlugin(ScrollTrigger);
   imports: [ButtonLink],
   template: `
     <section class="section contact" id="contact" data-theme="paper">
-      <div class="container container-narrow contact__inner">
-        <p class="eyebrow reveal">Contact</p>
-        <h2 class="contact__heading reveal">{{ contact.heading }}</h2>
-        <p class="contact__copy lead reveal">{{ contact.copy }}</p>
+      <div class="container contact__inner">
+        <div class="contact__content reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 class="contact__heading">{{ contact.heading }}</h2>
+          <p class="contact__copy lead">{{ contact.copy }}</p>
 
-        <div class="contact__actions reveal">
-          @for (link of links; track link.label) {
-            <app-button-link
-              [label]="link.label"
-              [href]="link.href"
-              [external]="link.kind !== 'email'"
-              [variant]="link.kind === 'email' ? 'primary' : 'ghost'"
-            />
-          }
+          <div class="contact__actions">
+            @for (link of links; track link.label) {
+              <app-button-link
+                [label]="link.label"
+                [href]="link.href"
+                [external]="link.kind !== 'email'"
+                [variant]="link.kind === 'email' ? 'primary' : 'ghost'"
+              />
+            }
+          </div>
+        </div>
+
+        <div class="contact__visual reveal">
+          <div class="contact__video-wrapper">
+            <video autoplay loop [muted]="true" playsinline class="contact__video">
+              <source src="/images/main_video.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
       </div>
     </section>

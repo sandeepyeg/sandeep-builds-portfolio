@@ -11,7 +11,7 @@ import {
 
 export const SITE_PROFILE: SiteProfile = {
   name: 'Sandeep Johal',
-  monogram: 'SB',
+  monogram: 'SJ',
   location: 'Edmonton, Alberta, Canada',
   role: 'Software Developer II · Edmonton, Alberta',
   email: 'johalsandeep64@gmail.com',
@@ -20,7 +20,7 @@ export const SITE_PROFILE: SiteProfile = {
   githubUrl: 'https://github.com/sandeepyeg',
   githubHandle: 'github.com/sandeepyeg',
   domain: 'sandeepbuilds.com',
-  resumePath: '/documents/SANDEEP JOHAL RESUME.pdf',
+  resumePath: '/documents/Sandeep-Johal-Resume.pdf',
 };
 
 export const NAV_ITEMS: readonly NavItem[] = [
@@ -31,7 +31,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
 ];
 
 export const HERO = {
-  nameLines: ['SANDEEP', 'SINGH'],
+  nameLines: ['SANDEEP', 'JOHAL'],
   headline: 'Full-stack engineer building reliable cloud and AI systems.',
   supporting:
     'I design, deploy and support enterprise applications using .NET, Angular, Azure, AWS and event-driven architecture.',

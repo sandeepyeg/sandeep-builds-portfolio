@@ -13,13 +13,18 @@ import gsap from 'gsap';
   selector: 'app-introduction',
   template: `
     <section class="section introduction" id="about" data-theme="paper">
-      <div class="container container-narrow introduction__inner">
-        <p class="eyebrow reveal">About</p>
-        <h2 class="introduction__heading" [innerHTML]="getSplitText(introduction.heading)"></h2>
-        <div class="introduction__body">
-          @for (paragraph of introduction.paragraphs; track $index) {
-            <p [innerHTML]="getSplitText(paragraph)"></p>
-          }
+      <div class="container introduction__inner">
+        <div class="introduction__left">
+          <p class="eyebrow reveal">About</p>
+          <h2 class="introduction__heading" [innerHTML]="getSplitText(introduction.heading)"></h2>
+        </div>
+
+        <div class="introduction__right">
+          <div class="introduction__body">
+            @for (paragraph of introduction.paragraphs; track $index) {
+              <p [innerHTML]="getSplitText(paragraph)"></p>
+            }
+          </div>
         </div>
       </div>
     </section>
