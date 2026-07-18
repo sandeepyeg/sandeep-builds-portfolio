@@ -2,6 +2,9 @@
   --cursor-x: -10rem;
   --cursor-y: -10rem;
   --cursor-spin: 0turn;
+  --cursor-scale: 1;
+  --cursor-offset-x: 0rem;
+  --cursor-offset-y: 0rem;
 
   position: fixed;
   left: 0;
@@ -11,13 +14,48 @@
   height: 0;
   pointer-events: none;
   opacity: 0;
-  transform: translate3d(var(--cursor-x), var(--cursor-y), 0);
-  transition: opacity var(--dur-fast) var(--ease-out);
+  transform: translate3d(
+      calc(var(--cursor-x) + var(--cursor-offset-x)),
+      calc(var(--cursor-y) + var(--cursor-offset-y)),
+      0
+    )
+    scale(var(--cursor-scale));
+  transform-origin: center;
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
   will-change: transform;
 }
 
 .code-cursor.is-visible {
   opacity: 1;
+}
+
+.code-cursor.is-quiet {
+  --cursor-scale: 0.52;
+  --cursor-offset-x: 1.05rem;
+  --cursor-offset-y: 1.15rem;
+
+  opacity: 0.42;
+}
+
+.code-cursor.is-quiet .code-cursor__ring,
+.code-cursor.is-quiet .code-cursor__trail,
+.code-cursor.is-quiet .code-cursor__token {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.code-cursor.is-quiet .code-cursor__core {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--accent-2) 10%, transparent),
+    0 0 12px color-mix(in srgb, var(--accent-2) 34%, transparent);
+}
+
+.code-cursor.is-quiet .code-cursor__core::before,
+.code-cursor.is-quiet .code-cursor__core::after {
+  opacity: 0;
+  animation-play-state: paused;
 }
 
 .code-cursor__ring {

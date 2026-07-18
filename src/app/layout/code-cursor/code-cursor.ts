@@ -64,6 +64,23 @@ export class CodeCursor {
   private currentX = 0;
   private currentY = 0;
   private visible = false;
+  private readonly quietSelectors = [
+    'a',
+    'button',
+    'input',
+    'textarea',
+    'select',
+    'summary',
+    '[role="button"]',
+    '[role="link"]',
+    '[tabindex]:not([tabindex="-1"])',
+    '.pp-card',
+    '.blog-card',
+    '.freelance-card',
+    '.project-card',
+    '.capability-card',
+    '.case-card',
+  ].join(',');
 
   @ViewChild('cursor') private cursor?: ElementRef<HTMLElement>;
 
@@ -77,12 +94,17 @@ export class CodeCursor {
         this.targetX = event.clientX;
         this.targetY = event.clientY;
         this.visible = true;
-        this.cursor?.nativeElement.classList.add('is-visible');
+
+        const cursor = this.cursor?.nativeElement;
+        if (!cursor) return;
+
+        cursor.classList.add('is-visible');
+        cursor.classList.toggle('is-quiet', this.isOverInteractiveElement(event.target));
       };
 
       const onPointerLeave = () => {
         this.visible = false;
-        this.cursor?.nativeElement.classList.remove('is-visible');
+        this.cursor?.nativeElement.classList.remove('is-visible', 'is-quiet');
       };
 
       window.addEventListener('pointermove', onPointerMove, { passive: true });
@@ -124,6 +146,10 @@ export class CodeCursor {
         this.tokenTransitioning = false;
       }, 260);
     }, 170);
+  }
+
+  private isOverInteractiveElement(target: EventTarget | null): boolean {
+    return target instanceof Element && target.closest(this.quietSelectors) !== null;
   }
 
   private animate(): void {
