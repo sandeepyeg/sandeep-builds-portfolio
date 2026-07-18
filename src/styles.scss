@@ -6,3 +6,8 @@
 @use './styles/buttons';
 @use './styles/utilities';
 @use './styles/motion';
+
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+}

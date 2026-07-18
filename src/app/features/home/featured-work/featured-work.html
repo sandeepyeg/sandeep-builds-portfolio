@@ -85,7 +85,12 @@
           <app-technology-list [technologies]="project().technologies" />
         </div>
 
-        <a class="btn btn--primary featured__cta" [routerLink]="project().route">
+        <button
+          type="button"
+          class="btn btn--primary featured__cta"
+          (click)="openCaseStudy()"
+          aria-haspopup="dialog"
+        >
           <span>Read Sanitized Case Study</span>
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
             <path
@@ -97,8 +102,117 @@
               d="M5 12h14M13 6l6 6-6 6"
             />
           </svg>
-        </a>
+        </button>
       </div>
     </article>
   </div>
+
+  @if (isCaseStudyOpen()) {
+    <div
+      class="case-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="case-modal-title"
+      (click)="closeCaseStudy()"
+      (wheel)="onCaseStudyWheel($event)"
+      (touchstart)="onCaseStudyTouchStart($event)"
+      (touchmove)="onCaseStudyTouchMove($event)"
+    >
+      <div class="case-modal__panel" (click)="$event.stopPropagation()">
+        <header class="case-modal__header">
+          <div>
+            <p class="eyebrow case-modal__eyebrow">{{ project().label }}</p>
+            <h3 id="case-modal-title" class="case-modal__title">{{ project().title }}</h3>
+          </div>
+          <button
+            type="button"
+            class="case-modal__close"
+            aria-label="Close case study"
+            (click)="closeCaseStudy()"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                d="M6 6l12 12M18 6L6 18"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <div #caseModalBody class="case-modal__body">
+          <p class="case-modal__lead">
+            {{ fullCaseStudy.overview }}
+          </p>
+
+          <div class="case-modal__grid">
+            @for (highlight of caseStudyHighlights; track highlight.heading) {
+              <section class="case-modal__section">
+                <h4>{{ highlight.heading }}</h4>
+                <p>{{ highlight.copy }}</p>
+              </section>
+            }
+          </div>
+
+          <section class="case-modal__section case-modal__section--wide">
+            <h4>Key Engineering Contributions</h4>
+            <ul role="list" class="case-modal__outcomes">
+              @for (outcome of caseStudyOutcomes; track outcome) {
+                <li>{{ outcome }}</li>
+              }
+            </ul>
+          </section>
+
+          @for (section of fullCaseStudy.sections; track section.id) {
+            <section class="case-modal__section case-modal__section--wide">
+              <h4>{{ section.heading }}</h4>
+              @for (paragraph of section.paragraphs; track $index) {
+                <p>{{ paragraph }}</p>
+              }
+              @if (section.bullets?.length) {
+                <ul role="list" class="case-modal__outcomes">
+                  @for (bullet of section.bullets; track bullet) {
+                    <li>{{ bullet }}</li>
+                  }
+                </ul>
+              }
+            </section>
+          }
+
+          <section class="case-modal__section case-modal__section--wide">
+            <h4>Technology</h4>
+            <ul role="list" class="case-modal__tags">
+              @for (technology of fullCaseStudy.technology; track technology) {
+                <li>{{ technology }}</li>
+              }
+            </ul>
+          </section>
+
+          <section class="case-modal__section case-modal__section--wide">
+            <h4>Lessons</h4>
+            <ol role="list" class="case-modal__lessons">
+              @for (lesson of fullCaseStudy.lessons; track lesson; let i = $index) {
+                <li>
+                  <span>0{{ i + 1 }}</span>
+                  {{ lesson }}
+                </li>
+              }
+            </ol>
+          </section>
+
+          <p class="case-modal__note">
+            Sanitized case study. Proprietary business rules, client information, internal
+            architecture, credentials and production data are intentionally excluded.
+          </p>
+        </div>
+
+        <footer class="case-modal__footer">
+          <p class="case-modal__footer-note">End of sanitized case study</p>
+          <button type="button" class="btn btn--primary" (click)="closeCaseStudy()">Done</button>
+        </footer>
+      </div>
+    </div>
+  }
 </section>
