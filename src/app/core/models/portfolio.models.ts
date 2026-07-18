@@ -26,6 +26,17 @@ export interface PersonalProject {
   readonly highlight?: string; // short impact statement shown as accent pill
 }
 
+export interface FreelanceProject {
+  readonly slug: string;
+  readonly client: string;
+  readonly industry: string;
+  readonly url: string;
+  readonly description: string;
+  readonly deliverables: readonly string[];
+  readonly technologies: readonly string[];
+  readonly highlight?: string;
+}
+
 export interface CaseStudySection {
   readonly id: string;
   readonly heading: string;

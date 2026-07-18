@@ -4,6 +4,7 @@ import {
   ContactLink,
   EducationEntry,
   ExperienceEntry,
+  FreelanceProject,
   NavItem,
   PersonalProject,
   PortfolioProject,
@@ -28,6 +29,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { label: 'About', fragment: 'about' },
   { label: 'Work', fragment: 'work' },
   { label: 'Projects', fragment: 'projects' },
+  { label: 'Freelance', fragment: 'freelance' },
   { label: 'Experience', fragment: 'experience' },
   { label: 'Contact', fragment: 'contact' },
 ];
@@ -378,5 +380,88 @@ export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
     language: 'Python',
     githubUrl: 'https://github.com/sandeepyeg/budgetbot',
     highlight: 'AI-powered · Personal finance',
+  },
+];
+
+export const FREELANCE_HEADING = 'Freelance & Client Work';
+export const FREELANCE_INTRO =
+  'Web design and development for small businesses and professional services — delivering fast, modern and SEO-friendly websites alongside custom internal tools and admin dashboards.';
+
+export const FREELANCE_PROJECTS: readonly FreelanceProject[] = [
+  {
+    slug: 'saffron-chefs',
+    client: 'Saffron Indian Cuisine',
+    industry: 'Food & Hospitality',
+    url: 'https://saffronchefs.ca',
+    description:
+      "Full marketing website for one of Edmonton's top-rated Indian restaurants. Features an interactive menu modal, reservation call-to-action, social integrations, and a responsive layout optimised for mobile dining discovery.",
+    deliverables: [
+      'Responsive website',
+      'Menu modal',
+      'SEO optimisation',
+      'Social media integration',
+    ],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+    highlight: 'Top-rated Edmonton Indian restaurant',
+  },
+  {
+    slug: 'express-appraisals',
+    client: 'Express Appraisals',
+    industry: 'Real Estate & Appraisal',
+    url: 'https://expressappraisals.ca',
+    description:
+      'Professional website for a certified real estate appraisal firm offering commercial and residential valuation services. Built with a clean service-page architecture, contact forms and a conversion-focused layout targeting property owners and legal professionals.',
+    deliverables: ['Multi-page website', 'Service pages', 'Contact forms', 'Mobile responsive'],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+    highlight: 'Commercial & residential appraisals',
+  },
+  {
+    slug: 'canada-wide-appraisals',
+    client: 'Canada Wide Appraisals',
+    industry: 'Real Estate & Appraisal',
+    url: 'https://canadawideappraisals.com',
+    description:
+      'Marketing website for a property valuation firm with over 15 years of expertise serving Alberta and Ontario. Includes full OG/meta SEO setup, structured service sections, and a trust-building design targeting mortgage lenders and legal clients.',
+    deliverables: [
+      'Full website',
+      'SEO & meta setup',
+      'Service architecture',
+      'Performance tuning',
+    ],
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    highlight: '15+ years of appraisal expertise',
+  },
+  {
+    slug: 'smart-accounting',
+    client: 'Smart Accounting & Tax Consultancy',
+    industry: 'Finance & Accounting',
+    url: 'https://www.smartaccounting.org/ui/index.php',
+    description:
+      'Full-featured accounting and tax consultancy website for an Edmonton-based firm. Includes animated UI with Slick carousels, service showcases for tax filing, bookkeeping and advisory, and a PHP-backed backend for dynamic content management.',
+    deliverables: ['Animated marketing site', 'PHP backend', 'Service pages', 'CMS integration'],
+    technologies: ['PHP', 'HTML', 'CSS', 'Bootstrap', 'JavaScript'],
+    highlight: 'Edmonton tax & accounting firm',
+  },
+  {
+    slug: 'legacy-custom-home',
+    client: 'Legacy Custom Homes',
+    industry: 'Construction & Real Estate',
+    url: 'https://www.legacycustomhome.ca',
+    description:
+      'Showcase website for a luxury custom home builder based in Edmonton, Alberta. Features a full-screen image gallery, project portfolio carousel, animated page transitions and a responsive layout designed to attract high-intent homebuying clients.',
+    deliverables: ['Portfolio website', 'Image gallery', 'Project carousel', 'Responsive design'],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Slick Carousel'],
+    highlight: 'Edmonton luxury home builder',
+  },
+  {
+    slug: 'internal-tools',
+    client: 'Various Clients',
+    industry: 'Internal Tools & Automation',
+    url: '',
+    description:
+      'Custom internal web applications, admin dashboards, and automation tools built for small and medium businesses — including inventory managers, booking systems, client portals and data export tools tailored to specific business workflows.',
+    deliverables: ['Admin dashboards', 'Booking systems', 'Client portals', 'Automation scripts'],
+    technologies: ['Angular', '.NET', 'PHP', 'PostgreSQL', 'Python'],
+    highlight: 'Custom apps & internal tooling',
   },
 ];

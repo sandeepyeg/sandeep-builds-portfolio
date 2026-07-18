@@ -4,6 +4,7 @@ import { Marquee } from './marquee/marquee';
 import { Introduction } from './introduction/introduction';
 import { FeaturedWork } from './featured-work/featured-work';
 import { PersonalProjects } from './personal-projects/personal-projects';
+import { Freelance } from './freelance/freelance';
 import { Capabilities } from './capabilities/capabilities';
 import { Experience } from './experience/experience';
 import { EngineeringLab } from './engineering-lab/engineering-lab';
@@ -17,6 +18,7 @@ import { Contact } from './contact/contact';
     Introduction,
     FeaturedWork,
     PersonalProjects,
+    Freelance,
     Capabilities,
     Experience,
     EngineeringLab,
@@ -28,6 +30,7 @@ import { Contact } from './contact/contact';
     <app-introduction />
     <app-featured-work />
     <app-personal-projects />
+    <app-freelance />
     <app-capabilities />
     <app-experience />
     <app-engineering-lab />
