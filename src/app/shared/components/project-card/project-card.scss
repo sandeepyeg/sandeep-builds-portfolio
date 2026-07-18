@@ -1,6 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .project-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
   gap: var(--space-md);
   padding: var(--space-lg);
   border: var(--border-subtle);
