@@ -64,6 +64,8 @@ export class CodeCursor {
   private currentX = 0;
   private currentY = 0;
   private visible = false;
+  private selecting = false;
+  private selectionRestoreTimer = 0;
   private readonly quietSelectors = [
     'a',
     'button',
@@ -93,31 +95,63 @@ export class CodeCursor {
       const onPointerMove = (event: PointerEvent) => {
         this.targetX = event.clientX;
         this.targetY = event.clientY;
-        this.visible = true;
 
         const cursor = this.cursor?.nativeElement;
         if (!cursor) return;
 
+        if (this.selecting || this.hasActiveSelection()) {
+          this.hideCursor();
+          return;
+        }
+
+        this.visible = true;
         cursor.classList.add('is-visible');
         cursor.classList.toggle('is-quiet', this.isOverInteractiveElement(event.target));
       };
 
+      const onPointerDown = () => {
+        this.selecting = true;
+        this.hideCursor();
+      };
+
+      const onPointerUp = () => {
+        window.clearTimeout(this.selectionRestoreTimer);
+        this.selectionRestoreTimer = window.setTimeout(() => {
+          this.selecting = this.hasActiveSelection();
+        }, 80);
+      };
+
+      const onSelectionChange = () => {
+        const hasSelection = this.hasActiveSelection();
+        this.selecting = hasSelection;
+
+        if (hasSelection) {
+          this.hideCursor();
+        }
+      };
+
       const onPointerLeave = () => {
-        this.visible = false;
-        this.cursor?.nativeElement.classList.remove('is-visible', 'is-quiet');
+        this.hideCursor();
       };
 
       window.addEventListener('pointermove', onPointerMove, { passive: true });
+      window.addEventListener('pointerdown', onPointerDown, { passive: true });
+      window.addEventListener('pointerup', onPointerUp, { passive: true });
       window.addEventListener('pointerleave', onPointerLeave, { passive: true });
+      document.addEventListener('selectionchange', onSelectionChange);
       this.tokenTimer = window.setInterval(() => this.shuffleTokens(), 900);
       this.animate();
 
       this.destroyRef.onDestroy(() => {
         window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerdown', onPointerDown);
+        window.removeEventListener('pointerup', onPointerUp);
         window.removeEventListener('pointerleave', onPointerLeave);
+        document.removeEventListener('selectionchange', onSelectionChange);
         window.clearInterval(this.tokenTimer);
         window.clearTimeout(this.tokenSwapTimer);
         window.clearTimeout(this.tokenSettleTimer);
+        window.clearTimeout(this.selectionRestoreTimer);
         cancelAnimationFrame(this.raf);
       });
     });
@@ -150,6 +184,16 @@ export class CodeCursor {
 
   private isOverInteractiveElement(target: EventTarget | null): boolean {
     return target instanceof Element && target.closest(this.quietSelectors) !== null;
+  }
+
+  private hasActiveSelection(): boolean {
+    const selection = document.getSelection();
+    return Boolean(selection && !selection.isCollapsed && selection.toString().trim().length > 0);
+  }
+
+  private hideCursor(): void {
+    this.visible = false;
+    this.cursor?.nativeElement.classList.remove('is-visible', 'is-quiet');
   }
 
   private animate(): void {
