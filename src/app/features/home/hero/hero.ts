@@ -62,6 +62,10 @@ export class Hero {
       if (prefersReduced) return;
 
       this.ctx = gsap.context(() => {
+        // Prime the clip elements: make them start clipped only once JS is ready,
+        // so the name is never permanently hidden if GSAP is slow.
+        document.querySelectorAll('.clip').forEach((el) => el.classList.add('clip--js-ready'));
+
         const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.0 } });
 
         // 1. Reveal name lines

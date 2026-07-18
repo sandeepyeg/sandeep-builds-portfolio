@@ -1,8 +1,16 @@
 .clip {
   display: block;
   overflow: hidden;
-  clip-path: inset(0 0 100% 0);
+  /* Visible by default — JS will add .clip--js-ready to apply
+     the clipped start state, preventing name from disappearing
+     if GSAP initialises before the element is ready. */
+  clip-path: inset(0 0 0% 0);
   transition: clip-path var(--dur-slow) var(--ease-out);
+}
+
+/* JS sets this class immediately before starting the timeline */
+.clip--js-ready {
+  clip-path: inset(0 0 100% 0);
 }
 
 .clip.is-visible {
