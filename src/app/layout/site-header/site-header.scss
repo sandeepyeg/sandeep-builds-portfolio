@@ -184,6 +184,32 @@
   }
 }
 
+.site-header__source-link {
+  display: inline-grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  color: inherit;
+  opacity: 0.82;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 999px;
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    color: var(--accent-2);
+    border-color: color-mix(in srgb, var(--accent-2) 60%, transparent);
+    background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
 .site-header__menu-btn {
   display: none;
   width: 2.5rem;

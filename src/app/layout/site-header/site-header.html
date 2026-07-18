@@ -65,6 +65,27 @@
             </span>
           </a>
         </li>
+        <li>
+          <a
+            [href]="profile.sourceUrl"
+            class="site-header__source-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View portfolio source code on GitHub"
+            title="Portfolio source"
+          >
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 18l6-6-6-6M8 6l-6 6 6 6M14 4l-4 16"
+              />
+            </svg>
+          </a>
+        </li>
         @if (hasResume) {
           <li>
             <a
@@ -131,6 +152,17 @@
           (click)="onNavClick()"
         >
           GitHub
+        </a>
+      </li>
+      <li>
+        <a
+          [href]="profile.sourceUrl"
+          class="mobile-menu__link"
+          target="_blank"
+          rel="noopener noreferrer"
+          (click)="onNavClick()"
+        >
+          Portfolio Source
         </a>
       </li>
       @if (hasResume) {

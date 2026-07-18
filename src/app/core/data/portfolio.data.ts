@@ -22,6 +22,7 @@ export const SITE_PROFILE: SiteProfile = {
   linkedinHandle: 'linkedin.com/in/johalsandeep',
   githubUrl: 'https://github.com/sandeepyeg',
   githubHandle: 'github.com/sandeepyeg',
+  sourceUrl: 'https://github.com/sandeepyeg/sandeep-builds-portfolio',
   domain: 'sandeepbuilds.com',
   resumePath: '/documents/SANDEEP JOHAL RESUME.pdf',
 };

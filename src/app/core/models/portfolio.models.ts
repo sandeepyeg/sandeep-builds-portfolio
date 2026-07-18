@@ -110,6 +110,7 @@ export interface SiteProfile {
   readonly linkedinHandle: string;
   readonly githubUrl: string;
   readonly githubHandle: string;
+  readonly sourceUrl: string;
   readonly domain: string;
   readonly resumePath: string;
 }
