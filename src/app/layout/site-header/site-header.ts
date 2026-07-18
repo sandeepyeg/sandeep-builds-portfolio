@@ -12,6 +12,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NAV_ITEMS, SITE_PROFILE } from '../../core/data/portfolio.data';
+import { AnimationService } from '../../core/services/animation.service';
 
 @Component({
   selector: 'app-site-header',
@@ -23,6 +24,7 @@ import { NAV_ITEMS, SITE_PROFILE } from '../../core/data/portfolio.data';
 export class SiteHeader {
   private readonly destroyRef = inject(DestroyRef);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly animationService = inject(AnimationService);
 
   protected readonly profile = SITE_PROFILE;
   protected readonly navItems = NAV_ITEMS;
@@ -39,6 +41,10 @@ export class SiteHeader {
   constructor() {
     afterNextRender(() => {
       this.setupScrollSpy();
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced) {
+        this.animationService.setupMagneticHover('.site-header__nav-link', 0.2);
+      }
     });
 
     this.destroyRef.onDestroy(() => {

@@ -69,6 +69,7 @@ export class Experience {
       if (prefersReduced) return;
 
       this.ctx = gsap.context(() => {
+        // Draw progress line
         gsap.fromTo(
           '.timeline__line-progress',
           { scaleY: 0 },
@@ -83,6 +84,48 @@ export class Experience {
             },
           },
         );
+
+        // Activate dots and items on scroll cross
+        const items = document.querySelectorAll('.timeline__item');
+        items.forEach((item) => {
+          const dot = item.querySelector('.timeline__dot');
+          const content = item.querySelector('.timeline__content');
+
+          gsap.to(content, { opacity: 0.8, x: 0 }); // Base state
+
+          ScrollTrigger.create({
+            trigger: item,
+            start: 'top 60%',
+            onEnter: () => {
+              const isCurrent = item.classList.contains('timeline__item--current');
+              gsap.to(dot, {
+                backgroundColor: isCurrent ? 'var(--color-lime)' : 'var(--accent-2)',
+                borderColor: isCurrent ? 'var(--color-lime)' : 'var(--accent-2)',
+                scale: 1.2,
+                duration: 0.4,
+              });
+              gsap.to(content, {
+                opacity: 1,
+                x: 10,
+                duration: 0.4,
+              });
+            },
+            onLeaveBack: () => {
+              const isCurrent = item.classList.contains('timeline__item--current');
+              gsap.to(dot, {
+                backgroundColor: isCurrent ? 'var(--color-lime)' : 'var(--color-ink-soft)',
+                borderColor: isCurrent ? 'var(--color-lime)' : 'var(--fg-muted)',
+                scale: 1.0,
+                duration: 0.4,
+              });
+              gsap.to(content, {
+                opacity: 0.7,
+                x: 0,
+                duration: 0.4,
+              });
+            },
+          });
+        });
       });
 
       this.destroyRef.onDestroy(() => {

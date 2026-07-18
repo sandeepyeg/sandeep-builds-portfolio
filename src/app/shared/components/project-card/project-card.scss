@@ -6,6 +6,29 @@
   border: var(--border-subtle);
   border-radius: var(--radius-lg);
   background: color-mix(in srgb, var(--bg-soft) 60%, transparent);
+  transition:
+    transform var(--dur-normal) var(--ease-out),
+    border-color var(--dur-normal) var(--ease-out),
+    background-color var(--dur-normal) var(--ease-out),
+    box-shadow var(--dur-normal) var(--ease-out);
+  will-change: transform, box-shadow;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--bg-soft) 85%, transparent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+
+    .project-card__visual path {
+      animation: card-flow-dash 1.2s linear infinite;
+    }
+  }
+}
+
+@keyframes card-flow-dash {
+  to {
+    stroke-dashoffset: -16;
+  }
 }
 
 .project-card__head {
@@ -54,4 +77,16 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-loose);
   color: var(--fg-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none !important;
+    &:hover {
+      transform: none !important;
+      .project-card__visual path {
+        animation: none !important;
+      }
+    }
+  }
 }

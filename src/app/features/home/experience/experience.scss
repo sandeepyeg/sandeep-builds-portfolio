@@ -58,12 +58,24 @@
   border-radius: 50%;
   background: var(--color-ink-soft);
   border: 2px solid var(--fg-muted);
+  transition:
+    transform 0.4s ease,
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+  will-change: transform;
 }
 
 .timeline__item--current .timeline__dot {
   background: var(--color-lime);
   border-color: var(--color-lime);
   box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-lime) 25%, transparent);
+}
+
+.timeline__content {
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+  will-change: transform, opacity;
 }
 
 .timeline__period {
