@@ -61,6 +61,11 @@
   align-items: center;
   gap: var(--space-sm);
   margin-top: var(--space-sm);
+
+  & > * {
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 .hero__availability {
