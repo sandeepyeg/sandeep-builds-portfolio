@@ -10,7 +10,6 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AnimatedHeading } from '../../../shared/components/animated-heading/animated-heading';
-import { ButtonLink } from '../../../shared/components/button-link/button-link';
 import { HERO, SITE_PROFILE, HAS_RESUME_PDF } from '../../../core/data/portfolio.data';
 import { AnimationService } from '../../../core/services/animation.service';
 import gsap from 'gsap';
@@ -36,7 +35,7 @@ interface GithubEvent {
 
 @Component({
   selector: 'app-hero',
-  imports: [AnimatedHeading, ButtonLink, RouterLink],
+  imports: [AnimatedHeading, RouterLink],
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -108,10 +107,7 @@ export class Hero {
         });
 
         // 5. Setup magnetic pointer effects for actions
-        this.animationService.setupMagneticHover(
-          '.hero__actions a, .hero__actions app-button-link',
-          0.2,
-        );
+        this.animationService.setupMagneticHover('.hero__actions .btn', 0.2);
       });
 
       this.destroyRef.onDestroy(() => {

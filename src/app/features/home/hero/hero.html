@@ -15,20 +15,56 @@
         <a routerLink="/" fragment="work" class="btn btn--primary">
           <span>View Selected Work</span>
         </a>
-        <app-button-link
-          label="GitHub"
-          [href]="profile.githubUrl"
-          [external]="true"
-          variant="ghost"
-        />
-        <app-button-link
-          label="LinkedIn"
+        <a class="btn btn--ghost" [href]="profile.githubUrl" target="_blank" rel="noopener noreferrer">
+          <span>GitHub</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M7 17 17 7M9 7h8v8"
+            />
+          </svg>
+        </a>
+        <a
+          class="btn btn--ghost"
           [href]="profile.linkedinUrl"
-          [external]="true"
-          variant="ghost"
-        />
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>LinkedIn</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M7 17 17 7M9 7h8v8"
+            />
+          </svg>
+        </a>
         @if (hasResume) {
-          <app-button-link label="Download Resume" [href]="profile.resumePath" variant="ghost" />
+          <a
+            class="btn btn--ghost"
+            [href]="profile.resumePath"
+            download
+            aria-label="Download Resume PDF"
+          >
+            <span>Download Resume</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v13M5 14l7 7 7-7"
+              />
+            </svg>
+          </a>
         }
       </div>
 
