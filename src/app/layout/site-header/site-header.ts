@@ -7,7 +7,9 @@ import {
   computed,
   inject,
   signal,
+  PLATFORM_ID,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NAV_ITEMS, SITE_PROFILE } from '../../core/data/portfolio.data';
 
@@ -20,6 +22,7 @@ import { NAV_ITEMS, SITE_PROFILE } from '../../core/data/portfolio.data';
 })
 export class SiteHeader {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly platformId = inject(PLATFORM_ID);
 
   protected readonly profile = SITE_PROFILE;
   protected readonly navItems = NAV_ITEMS;
@@ -38,7 +41,11 @@ export class SiteHeader {
       this.setupScrollSpy();
     });
 
-    this.destroyRef.onDestroy(() => this.unlockScroll());
+    this.destroyRef.onDestroy(() => {
+      if (isPlatformBrowser(this.platformId)) {
+        this.unlockScroll();
+      }
+    });
   }
 
   @HostListener('window:scroll')
@@ -95,10 +102,12 @@ export class SiteHeader {
   }
 
   private lockScroll(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     document.body.style.overflow = 'hidden';
   }
 
   private unlockScroll(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     document.body.style.overflow = '';
   }
 }
