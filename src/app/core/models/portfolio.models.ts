@@ -15,6 +15,17 @@ export interface PortfolioProject {
   readonly professionalCaseStudy?: boolean;
 }
 
+export interface PersonalProject {
+  readonly slug: string;
+  readonly title: string;
+  readonly description: string;
+  readonly technologies: readonly string[];
+  readonly language: string;
+  readonly githubUrl?: string; // omit for private/professional projects
+  readonly isPrivate?: boolean;
+  readonly highlight?: string; // short impact statement shown as accent pill
+}
+
 export interface CaseStudySection {
   readonly id: string;
   readonly heading: string;

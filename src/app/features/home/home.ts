@@ -3,6 +3,7 @@ import { Hero } from './hero/hero';
 import { Marquee } from './marquee/marquee';
 import { Introduction } from './introduction/introduction';
 import { FeaturedWork } from './featured-work/featured-work';
+import { PersonalProjects } from './personal-projects/personal-projects';
 import { Capabilities } from './capabilities/capabilities';
 import { Experience } from './experience/experience';
 import { EngineeringLab } from './engineering-lab/engineering-lab';
@@ -15,6 +16,7 @@ import { Contact } from './contact/contact';
     Marquee,
     Introduction,
     FeaturedWork,
+    PersonalProjects,
     Capabilities,
     Experience,
     EngineeringLab,
@@ -25,6 +27,7 @@ import { Contact } from './contact/contact';
     <app-marquee />
     <app-introduction />
     <app-featured-work />
+    <app-personal-projects />
     <app-capabilities />
     <app-experience />
     <app-engineering-lab />

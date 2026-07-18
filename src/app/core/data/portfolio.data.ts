@@ -5,6 +5,7 @@ import {
   EducationEntry,
   ExperienceEntry,
   NavItem,
+  PersonalProject,
   PortfolioProject,
   SiteProfile,
 } from '../models/portfolio.models';
@@ -26,6 +27,7 @@ export const SITE_PROFILE: SiteProfile = {
 export const NAV_ITEMS: readonly NavItem[] = [
   { label: 'About', fragment: 'about' },
   { label: 'Work', fragment: 'work' },
+  { label: 'Projects', fragment: 'projects' },
   { label: 'Experience', fragment: 'experience' },
   { label: 'Contact', fragment: 'contact' },
 ];
@@ -321,3 +323,60 @@ export const EXPERIENCE_HEADING = 'Experience';
 export const ENGINEERING_LAB_HEADING = 'Currently Building';
 export const ENGINEERING_LAB_INTRO =
   'Independent projects focused on distributed systems and practical AI engineering.';
+
+export const PERSONAL_PROJECTS_HEADING = 'Personal Projects';
+export const PERSONAL_PROJECTS_INTRO =
+  'A selection of personal and open-source projects spanning full-stack web applications, backend infrastructure, developer tooling and AI experiments.';
+
+export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
+  {
+    slug: 'project-jupiter',
+    title: 'Project Jupiter',
+    description:
+      "Contributed to Canada's leading AI-native immigration platform, building secure backend APIs, workflow automation and Angular dashboard features used by thousands of applicants navigating complex immigration processes.",
+    technologies: ['.NET', 'Angular', 'PostgreSQL', 'Azure', 'AI/ML APIs'],
+    language: 'C#',
+    isPrivate: true,
+    highlight: "Canada's #1 AI immigration platform",
+  },
+  {
+    slug: 'saas-factory',
+    title: 'SaaS Factory — core-platform',
+    description:
+      'Designed and built a multi-tenant SaaS bootstrapping platform providing shared authentication, billing, feature-flag management and tenant isolation as reusable infrastructure for rapidly launching new product lines.',
+    technologies: ['.NET', 'Angular', 'PostgreSQL', 'Stripe', 'Docker', 'Azure'],
+    language: 'C#',
+    isPrivate: true,
+    highlight: 'Multi-tenant SaaS platform',
+  },
+  {
+    slug: 'lite-queue-net',
+    title: 'LiteQueue.NET',
+    description:
+      'A lightweight, Redis-powered message queue system built with .NET 8 Web API. Supports queue creation, delayed messages, retries, dead-letter queues, pub/sub and scheduled jobs using clean architecture and background services. Designed as a self-hosted SQS alternative.',
+    technologies: ['.NET 8', 'Redis', 'Docker', 'REST API'],
+    language: 'C#',
+    githubUrl: 'https://github.com/sandeepyeg/LiteQueue.NET',
+    highlight: 'Open source · Self-hosted SQS alternative',
+  },
+  {
+    slug: 'members-platform',
+    title: 'Members Management Platform',
+    description:
+      'A full-stack members management application consisting of a .NET REST API backend and an Angular SPA frontend. Covers authentication, member profiles, role management and CRUD workflows with a clean separation of concerns across the stack.',
+    technologies: ['.NET', 'Angular', 'TypeScript', 'PostgreSQL'],
+    language: 'TypeScript',
+    githubUrl: 'https://github.com/sandeepyeg/members-backend',
+    highlight: 'Full-stack · API + SPA',
+  },
+  {
+    slug: 'budgetbot',
+    title: 'BudgetBot',
+    description:
+      'An AI-powered personal finance bot that categorises transactions, tracks spending patterns and surfaces budget insights through a conversational interface. Built with Python using LLM APIs for natural language understanding.',
+    technologies: ['Python', 'LLM APIs', 'FastAPI'],
+    language: 'Python',
+    githubUrl: 'https://github.com/sandeepyeg/budgetbot',
+    highlight: 'AI-powered · Personal finance',
+  },
+];
