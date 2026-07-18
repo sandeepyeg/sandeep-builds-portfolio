@@ -21,7 +21,10 @@
     box-shadow var(--dur-normal) var(--ease-out);
   will-change: transform, box-shadow;
 
-  .project-card__visual path {
+  .project-card__visual path,
+  .project-card__visual polygon,
+  .project-card__visual circle,
+  .project-card__visual ellipse {
     animation: card-flow-dash 3.5s linear infinite;
   }
 
@@ -31,7 +34,10 @@
     background: color-mix(in srgb, var(--bg-soft) 85%, transparent);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 
-    .project-card__visual path {
+    .project-card__visual path,
+    .project-card__visual polygon,
+    .project-card__visual circle,
+    .project-card__visual ellipse {
       animation-duration: 1.2s;
     }
   }
@@ -98,7 +104,10 @@
       transform: none !important;
     }
   }
-  .project-card__visual path {
+  .project-card__visual path,
+  .project-card__visual polygon,
+  .project-card__visual circle,
+  .project-card__visual ellipse {
     animation: none !important;
   }
 }
