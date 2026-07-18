@@ -12,7 +12,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
-import { NAV_ITEMS, SITE_PROFILE } from '../../core/data/portfolio.data';
+import { NAV_ITEMS, SITE_PROFILE, HAS_RESUME_PDF } from '../../core/data/portfolio.data';
 import { AnimationService } from '../../core/services/animation.service';
 
 @Component({
@@ -30,6 +30,7 @@ export class SiteHeader {
 
   protected readonly profile = SITE_PROFILE;
   protected readonly navItems = NAV_ITEMS;
+  protected readonly hasResume = HAS_RESUME_PDF;
   protected readonly scrolled = signal(false);
   protected readonly menuOpen = signal(false);
   protected readonly activeSection = signal<string>('');
