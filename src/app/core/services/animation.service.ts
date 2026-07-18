@@ -24,6 +24,7 @@ export class AnimationService {
     afterNextRender(
       () => {
         gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ ignoreMobileResize: true });
         this.registered = true;
       },
       { injector: this.injector },

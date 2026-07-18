@@ -50,6 +50,22 @@ export class FeaturedWork {
       const isMobile = window.matchMedia('(max-width: 900px)').matches;
 
       this.ctx = gsap.context(() => {
+        // Draw diagram flow paths on scroll (runs on desktop & mobile)
+        gsap.fromTo(
+          '.flow-path',
+          { strokeDashoffset: 12, strokeDasharray: '4 4' },
+          {
+            strokeDashoffset: 0,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.featured__visual',
+              start: 'top 85%',
+            },
+          },
+        );
+
         if (isMobile) {
           // Parallel visual float
           gsap.fromTo(
@@ -86,6 +102,14 @@ export class FeaturedWork {
                 },
               },
             );
+
+            // Toggle active focus state as cards scroll through viewport center
+            ScrollTrigger.create({
+              trigger: card,
+              start: 'top 65%',
+              end: 'bottom 45%',
+              toggleClass: 'is-active',
+            });
           });
           return;
         }

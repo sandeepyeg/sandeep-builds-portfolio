@@ -8,6 +8,9 @@ import {
 import { SectionHeading } from '../../../shared/components/section-heading/section-heading';
 import { EDUCATION, EXPERIENCE, EXPERIENCE_HEADING } from '../../../core/data/portfolio.data';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-experience',
