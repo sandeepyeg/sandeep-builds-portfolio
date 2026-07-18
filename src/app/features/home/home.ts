@@ -5,6 +5,7 @@ import { Introduction } from './introduction/introduction';
 import { FeaturedWork } from './featured-work/featured-work';
 import { PersonalProjects } from './personal-projects/personal-projects';
 import { Freelance } from './freelance/freelance';
+import { Blog } from './blog/blog';
 import { Capabilities } from './capabilities/capabilities';
 import { Experience } from './experience/experience';
 import { EngineeringLab } from './engineering-lab/engineering-lab';
@@ -21,6 +22,7 @@ import { Contact } from './contact/contact';
     Experience,
     PersonalProjects,
     Freelance,
+    Blog,
     EngineeringLab,
     Contact,
   ],
@@ -33,6 +35,7 @@ import { Contact } from './contact/contact';
     <app-experience />
     <app-personal-projects />
     <app-freelance />
+    <app-blog />
     <app-engineering-lab />
     <app-contact />
   `,

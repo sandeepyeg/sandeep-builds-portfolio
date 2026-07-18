@@ -37,6 +37,17 @@ export interface FreelanceProject {
   readonly highlight?: string;
 }
 
+export interface BlogTopic {
+  readonly slug: string;
+  readonly number: string;
+  readonly title: string;
+  readonly category: string;
+  readonly summary: string;
+  readonly points: readonly string[];
+  readonly details: readonly string[];
+  readonly takeaway: string;
+}
+
 export interface CaseStudySection {
   readonly id: string;
   readonly heading: string;
