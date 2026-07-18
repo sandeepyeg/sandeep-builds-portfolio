@@ -333,7 +333,7 @@ export const PERSONAL_PROJECTS_HEADING = 'Personal Projects';
 export const PERSONAL_PROJECTS_INTRO =
   'A selection of personal, freelance-adjacent and open-source projects spanning full-stack web applications, backend infrastructure, developer tooling, templates and AI experiments.';
 
-export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
+const PERSONAL_PROJECTS_SOURCE: readonly PersonalProject[] = [
   {
     slug: 'project-jupiter',
     title: 'Project Jupiter',
@@ -715,6 +715,29 @@ export const PERSONAL_PROJECTS: readonly PersonalProject[] = [
     ],
   },
 ];
+
+const PERSONAL_PROJECT_PRIORITY: readonly string[] = [
+  'project-jupiter',
+  'lite-queue-net',
+  'members-platform',
+  'aspire-angular-clean-template',
+  'telegram-budget-assistant',
+  'jules-supervisor',
+  'saas-factory',
+  'delivercheck-platform',
+];
+
+export const PERSONAL_PROJECTS: readonly PersonalProject[] = PERSONAL_PROJECT_PRIORITY.map(
+  (slug) => {
+    const project = PERSONAL_PROJECTS_SOURCE.find((item) => item.slug === slug);
+
+    if (!project) {
+      throw new Error(`Missing personal project data for ${slug}`);
+    }
+
+    return project;
+  },
+);
 
 export const FREELANCE_HEADING = 'Freelance & Client Work';
 export const FREELANCE_INTRO =

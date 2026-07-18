@@ -63,30 +63,92 @@
   color: inherit;
 
   &:hover {
-    .site-header__monogram {
-      transform: scale(1.08) rotate(4deg);
-      background: var(--accent-2);
+    .site-header__brand-mark {
+      transform: translateY(-1px) rotate(-2deg);
+      border-color: color-mix(in srgb, var(--accent-2) 74%, transparent);
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--accent-2) 18%, transparent),
+        0 10px 28px color-mix(in srgb, var(--accent-2) 22%, transparent);
     }
+
+    .site-header__brand-grid {
+      opacity: 0.9;
+      transform: translate3d(0.15rem, -0.1rem, 0);
+    }
+
     .site-header__wordmark {
       color: var(--accent-2);
     }
   }
 }
 
-.site-header__monogram {
+.site-header__brand-mark {
+  position: relative;
+  isolation: isolate;
   display: inline-grid;
   place-items: center;
-  width: 2rem;
-  height: 2rem;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  background: var(--accent);
-  color: var(--on-accent);
-  border-radius: 0.5rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  overflow: hidden;
+  color: var(--accent);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), transparent 58%),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid color-mix(in srgb, var(--accent) 44%, var(--border-subtle));
+  border-radius: 0.65rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 8px 24px rgba(0, 0, 0, 0.18);
   transition:
-    transform var(--dur-fast) var(--ease-out),
-    background-color var(--dur-fast) var(--ease-out);
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.site-header__brand-grid {
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent-2) 28%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--accent-2) 28%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 0.45rem 0.45rem;
+  transform: translate3d(0, 0, 0) rotate(8deg);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.site-header__brand-mark svg {
+  display: block;
+}
+
+.site-header__brand-frame,
+.site-header__brand-prompt,
+.site-header__brand-cursor {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-header__brand-frame {
+  stroke-width: 1.7;
+  opacity: 0.9;
+}
+
+.site-header__brand-prompt {
+  stroke-width: 2.15;
+}
+
+.site-header__brand-cursor {
+  stroke-width: 2;
+  color: var(--accent-2);
 }
 
 .site-header__wordmark {
