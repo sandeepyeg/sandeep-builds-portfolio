@@ -20,7 +20,7 @@ export const SITE_PROFILE: SiteProfile = {
   githubUrl: 'https://github.com/sandeepyeg',
   githubHandle: 'github.com/sandeepyeg',
   domain: 'sandeepbuilds.com',
-  resumePath: '/documents/Sandeep-Johal-Resume.pdf',
+  resumePath: '/documents/SANDEEP JOHAL RESUME.pdf',
 };
 
 export const NAV_ITEMS: readonly NavItem[] = [
@@ -313,7 +313,7 @@ export const CONTACT = {
 };
 
 // Toggle to true once a real resume PDF exists at public/documents/SANDEEP JOHAL RESUME.pdf.
-export const HAS_RESUME_PDF = false;
+export const HAS_RESUME_PDF = true;
 
 export const FEATURED_WORK_HEADING = 'Selected Engineering Work';
 export const CAPABILITIES_HEADING = 'What I Build';
