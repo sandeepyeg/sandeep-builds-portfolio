@@ -105,6 +105,15 @@
   margin: 0;
 }
 
+// Compact resume button that fits the nav bar scale
+.site-header__resume-btn {
+  padding: 0.45rem 0.9rem;
+  font-size: var(--text-small);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .site-header__nav-link {
   display: inline-flex;
   align-items: center;

@@ -65,6 +65,28 @@
             </span>
           </a>
         </li>
+        @if (hasResume) {
+          <li>
+            <a
+              [href]="profile.resumePath"
+              download
+              class="site-header__resume-btn btn btn--ghost"
+              aria-label="Download Resume PDF"
+            >
+              Resume
+              <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v13M5 14l7 7 7-7"
+                />
+              </svg>
+            </a>
+          </li>
+        }
       </ul>
     </nav>
 
@@ -111,6 +133,13 @@
           GitHub
         </a>
       </li>
+      @if (hasResume) {
+        <li>
+          <a [href]="profile.resumePath" download class="mobile-menu__link" (click)="onNavClick()">
+            Download Resume
+          </a>
+        </li>
+      }
     </ul>
   </div>
 </header>
