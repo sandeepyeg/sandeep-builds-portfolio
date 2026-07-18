@@ -24,6 +24,13 @@ export interface PersonalProject {
   readonly githubUrl?: string; // omit for private/professional projects
   readonly isPrivate?: boolean;
   readonly highlight?: string; // short impact statement shown as accent pill
+  readonly details?: readonly string[];
+  readonly flow?: readonly string[];
+  readonly keyPoints?: readonly string[];
+  readonly role?: string;
+  readonly architecture?: readonly string[];
+  readonly demoValue?: readonly string[];
+  readonly nextSteps?: readonly string[];
 }
 
 export interface FreelanceProject {
