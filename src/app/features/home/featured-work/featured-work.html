@@ -3,7 +3,7 @@
     <app-section-heading eyebrow="01 · Case Study" [heading]="heading" />
 
     <article class="featured">
-      <div class="featured__visual reveal" aria-hidden="true">
+      <div class="featured__visual" aria-hidden="true">
         <svg viewBox="0 0 560 200" class="featured__flow" preserveAspectRatio="xMidYMid meet">
           <g fill="none" stroke="currentColor" stroke-width="1.5">
             @for (node of flow; track node; let i = $index) {
@@ -53,7 +53,7 @@
         <p class="featured__visual-note">Conceptual illustration only (scroll to step through)</p>
       </div>
 
-      <div class="featured__content reveal">
+      <div class="featured__content">
         <p class="eyebrow featured__label">{{ project().label }}</p>
         <h3 class="featured__title">{{ project().title }}</h3>
         <p class="featured__summary">{{ project().summary }}</p>

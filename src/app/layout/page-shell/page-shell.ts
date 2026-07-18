@@ -47,7 +47,6 @@ export class PageShell {
 
       this.ctx = gsap.context(() => {
         this.setupThemeTransitions();
-        this.setupScrollReveals();
       });
 
       this.destroyRef.onDestroy(() => {
@@ -71,43 +70,6 @@ export class PageShell {
         onEnter: () => this.currentTheme.set(theme),
         onEnterBack: () => this.currentTheme.set(theme),
       });
-    });
-  }
-
-  private setupScrollReveals(): void {
-    document.querySelectorAll('.reveal').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        },
-      );
-    });
-
-    document.querySelectorAll('.clip-reveal').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { clipPath: 'inset(0 0 100% 0)' },
-        {
-          clipPath: 'inset(0 0 0% 0)',
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        },
-      );
     });
   }
 }

@@ -51,6 +51,7 @@ export class FeaturedWork {
 
       this.ctx = gsap.context(() => {
         if (isMobile) {
+          // Parallel visual float
           gsap.fromTo(
             '.featured__visual',
             { y: -15 },
@@ -65,6 +66,27 @@ export class FeaturedWork {
               },
             },
           );
+
+          // Card entrance reveals
+          const cards = document.querySelectorAll('.featured__step-card');
+          cards.forEach((card) => {
+            gsap.fromTo(
+              card,
+              { opacity: 0.35, y: 15 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: card,
+                  start: 'top 85%',
+                  end: 'bottom 25%',
+                  toggleActions: 'play none none reverse',
+                },
+              },
+            );
+          });
           return;
         }
 

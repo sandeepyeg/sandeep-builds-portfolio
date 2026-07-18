@@ -88,6 +88,23 @@ export class Experience {
         // Activate dots and items on scroll cross
         const items = document.querySelectorAll('.timeline__item');
         items.forEach((item) => {
+          // Fade in the timeline item itself as it enters the viewport
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            },
+          );
+
           const dot = item.querySelector('.timeline__dot');
           const content = item.querySelector('.timeline__content');
 
