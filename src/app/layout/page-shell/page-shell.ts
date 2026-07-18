@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { SiteHeader } from '../site-header/site-header';
 import { SiteFooter } from '../site-footer/site-footer';
+import { CodeCursor } from '../code-cursor/code-cursor';
 import { AnimationService } from '../../core/services/animation.service';
 import { ScrollService } from '../../core/services/scroll.service';
 import gsap from 'gsap';
@@ -15,10 +16,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-page-shell',
-  imports: [SiteHeader, SiteFooter],
+  imports: [SiteHeader, SiteFooter, CodeCursor],
   template: `
     <div class="page-shell" [attr.data-theme]="currentTheme()">
       <a class="skip-link" href="#main">Skip to content</a>
+      <app-code-cursor />
       <app-site-header />
       <main id="main" class="page-shell__main">
         <ng-content />

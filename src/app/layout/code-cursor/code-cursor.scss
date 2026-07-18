@@ -1,0 +1,273 @@
+.code-cursor {
+  --cursor-x: -10rem;
+  --cursor-y: -10rem;
+  --cursor-spin: 0turn;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 150;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(var(--cursor-x), var(--cursor-y), 0);
+  transition: opacity var(--dur-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.code-cursor.is-visible {
+  opacity: 1;
+}
+
+.code-cursor__ring {
+  position: absolute;
+  left: -1.18rem;
+  top: -1.18rem;
+  width: 2.36rem;
+  height: 2.36rem;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 10%, transparent) 0 20%, transparent 48%),
+    conic-gradient(
+      from var(--cursor-spin),
+      transparent,
+      color-mix(in srgb, var(--accent) 35%, transparent),
+      transparent,
+      color-mix(in srgb, var(--color-coral) 30%, transparent),
+      transparent
+    );
+  opacity: 0.75;
+  animation: cursor-breathe 2.4s ease-in-out infinite;
+  mask: radial-gradient(circle, transparent 0 58%, black 59%);
+}
+
+.code-cursor__core {
+  position: absolute;
+  left: -0.28rem;
+  top: -0.28rem;
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--accent-2) 12%, transparent),
+    0 0 22px color-mix(in srgb, var(--accent-2) 52%, transparent);
+}
+
+.code-cursor__core::after {
+  content: '';
+  position: absolute;
+  inset: -0.5rem;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 36%, transparent);
+  animation: cursor-ping 1.65s ease-out infinite;
+}
+
+.code-cursor__core::before {
+  content: '>';
+  position: absolute;
+  left: 0.55rem;
+  top: -0.32rem;
+  color: var(--accent-2);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-2) 70%, transparent);
+  animation: cursor-type 0.72s steps(2, jump-none) infinite;
+}
+
+.code-cursor__trail {
+  --delay: calc(var(--i) * -0.14s);
+
+  position: absolute;
+  left: -0.1rem;
+  top: -0.1rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 70%, white);
+  opacity: 0.54;
+  transform:
+    rotate(calc(var(--cursor-spin) + var(--i) * 47deg))
+    translateX(0.62rem);
+  animation: cursor-trail 0.9s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.code-cursor__trail:nth-of-type(2n) {
+  background: var(--color-lime);
+  transform:
+    rotate(calc(var(--cursor-spin) + var(--i) * 51deg))
+    translateX(0.94rem)
+    translateY(-0.22rem);
+}
+
+.code-cursor__trail:nth-of-type(3n) {
+  width: 0.42rem;
+  height: 1px;
+  border-radius: 999px;
+  background: var(--color-coral);
+  transform:
+    rotate(calc(var(--cursor-spin) + var(--i) * 39deg))
+    translateX(1.12rem)
+    translateY(0.18rem);
+}
+
+.code-cursor__token {
+  --angle: calc((var(--i) * 88deg) + var(--cursor-spin));
+  --radius: 1.42rem;
+
+  position: absolute;
+  left: -0.82rem;
+  top: -0.52rem;
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35rem;
+  height: 0.95rem;
+  padding-inline: 0.28rem;
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent),
+    color-mix(in srgb, var(--color-ink) 74%, transparent);
+  box-shadow:
+    0 5px 16px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform:
+    rotate(var(--angle))
+    translateX(var(--radius))
+    rotate(calc(var(--angle) * -1));
+  animation: token-float 1.7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.18s);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.code-cursor__token:nth-child(3n) {
+  color: var(--color-lime);
+  border-color: color-mix(in srgb, var(--color-lime) 34%, transparent);
+}
+
+.code-cursor__token:nth-child(3n + 1) {
+  color: var(--color-coral);
+  border-color: color-mix(in srgb, var(--color-coral) 34%, transparent);
+}
+
+.code-cursor.is-shuffling .code-cursor__token {
+  animation:
+    token-out 0.18s var(--ease-in-out) both,
+    token-float 1.7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.025s), calc(var(--i) * -0.18s);
+}
+
+.code-cursor.is-settling .code-cursor__token {
+  animation:
+    token-in 0.26s var(--ease-out) both,
+    token-float 2.1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.04s), calc(var(--i) * -0.18s);
+}
+
+:host-context(.modal-open) .code-cursor {
+  opacity: 0;
+}
+
+@keyframes cursor-breathe {
+  0%,
+  100% {
+    transform: scale(0.96) rotate(0deg);
+    opacity: 0.48;
+  }
+  50% {
+    transform: scale(1.05) rotate(18deg);
+    opacity: 0.58;
+  }
+}
+
+@keyframes cursor-ping {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@keyframes cursor-trail {
+  0%,
+  100% {
+    opacity: 0.18;
+    scale: 0.72;
+  }
+  50% {
+    opacity: 0.78;
+    scale: 1.15;
+  }
+}
+
+@keyframes token-float {
+  0%,
+  100% {
+    margin-top: -0.08rem;
+  }
+  50% {
+    margin-top: 0.08rem;
+  }
+}
+
+@keyframes token-out {
+  0% {
+    opacity: 1;
+    scale: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    scale: 0.86;
+    translate: 0 0.28rem;
+    filter: blur(2px);
+  }
+}
+
+@keyframes token-in {
+  0% {
+    opacity: 0;
+    scale: 0.9;
+    translate: 0 -0.24rem;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
+@keyframes cursor-type {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  46%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .code-cursor {
+    display: none;
+  }
+}
