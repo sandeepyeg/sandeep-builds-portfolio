@@ -454,6 +454,38 @@ export const FREELANCE_PROJECTS: readonly FreelanceProject[] = [
     highlight: 'Edmonton luxury home builder',
   },
   {
+    slug: 'river-city-grading',
+    client: 'River City Grading',
+    industry: 'Landscape Construction',
+    url: 'https://rivercitygrading.ca/',
+    description:
+      'Modern website for an Edmonton landscape construction company serving residential, commercial and multifamily projects across Alberta. Highlights grading, site surveying, sod and planting, retaining walls, irrigation, lighting and sustainable outdoor construction services.',
+    deliverables: [
+      'Service website',
+      'Quote call-to-action',
+      'Project-focused content',
+      'Mobile responsive',
+    ],
+    technologies: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
+    highlight: '15+ years serving Alberta',
+  },
+  {
+    slug: 'total-delivery-solution',
+    client: 'Total Delivery Solution',
+    industry: 'Transportation & Logistics',
+    url: 'https://totaldeliverysolution.ca/',
+    description:
+      'Business website for an Alberta transportation provider offering skid delivery, dock-to-dock shipments, moving services, hotshot and long-haul delivery, junk removal, and appliance delivery with installation. Built around service discovery and quote conversion.',
+    deliverables: [
+      'Marketing website',
+      'Service sections',
+      'Quote call-to-action',
+      'Responsive layout',
+    ],
+    technologies: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
+    highlight: 'Alberta delivery & trucking services',
+  },
+  {
     slug: 'internal-tools',
     client: 'Various Clients',
     industry: 'Internal Tools & Automation',
