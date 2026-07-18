@@ -72,10 +72,41 @@
     color var(--dur-fast) var(--ease-out);
 }
 
+.nav-text-wrap {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.25em;
+  vertical-align: bottom;
+}
+
+.nav-text {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.nav-text--2 {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .site-header__nav-link:hover,
 .site-header__nav-link[aria-current='true'] {
   opacity: 1;
   color: var(--accent-2);
+
+  .nav-text--1 {
+    transform: translateY(-100%);
+  }
+
+  .nav-text--2 {
+    transform: translateY(-100%);
+  }
 }
 
 .site-header__menu-btn {

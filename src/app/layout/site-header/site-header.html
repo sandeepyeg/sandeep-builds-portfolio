@@ -21,7 +21,10 @@
               [attr.aria-current]="activeSection() === item.fragment ? 'true' : null"
               (click)="onNavClick()"
             >
-              {{ item.label }}
+              <span class="nav-text-wrap">
+                <span class="nav-text nav-text--1">{{ item.label }}</span>
+                <span class="nav-text nav-text--2" aria-hidden="true">{{ item.label }}</span>
+              </span>
             </a>
           </li>
         }
@@ -32,17 +35,34 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M7 17 17 7M9 7h8v8"
-              />
-            </svg>
+            <span class="nav-text-wrap">
+              <span class="nav-text nav-text--1">
+                GitHub
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 17 17 7M9 7h8v8"
+                  />
+                </svg>
+              </span>
+              <span class="nav-text nav-text--2" aria-hidden="true">
+                GitHub
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 17 17 7M9 7h8v8"
+                  />
+                </svg>
+              </span>
+            </span>
           </a>
         </li>
       </ul>

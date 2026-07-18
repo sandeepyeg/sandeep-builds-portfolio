@@ -1,6 +1,6 @@
 .experience {
-  background: var(--bg);
-  color: var(--fg);
+  background: transparent;
+  color: inherit;
 }
 
 .timeline {
@@ -11,26 +11,39 @@
   flex-direction: column;
 }
 
+.timeline-container {
+  position: relative;
+}
+
+.timeline__line {
+  position: absolute;
+  left: 1.25rem;
+  transform: translateX(-50%);
+  top: 0.85rem;
+  bottom: 2rem;
+  width: 2px;
+  background: var(--border-subtle);
+  overflow: hidden;
+}
+
+.timeline__line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-2);
+  transform-origin: top;
+  transform: scaleY(0);
+  will-change: transform;
+}
+
 .timeline__item {
   display: grid;
   grid-template-columns: 2.5rem 1fr;
   gap: var(--space-md);
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
   position: relative;
-}
-
-.timeline__item::before {
-  content: '';
-  position: absolute;
-  left: 1.16rem;
-  top: 1.5rem;
-  bottom: 0;
-  width: 2px;
-  background: var(--border-subtle);
-}
-
-.timeline__item:last-child::before {
-  display: none;
 }
 
 .timeline__marker {
@@ -79,7 +92,7 @@
 }
 
 .education {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
   padding-top: var(--space-lg);
   border-top: var(--border-subtle);
 }

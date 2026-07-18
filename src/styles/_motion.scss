@@ -34,9 +34,23 @@
   }
 }
 
+// Word-reveal animations for split text
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word-inner {
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .clip-reveal {
+  .clip-reveal,
+  .word-inner {
     opacity: 1 !important;
     transform: none !important;
     clip-path: none !important;

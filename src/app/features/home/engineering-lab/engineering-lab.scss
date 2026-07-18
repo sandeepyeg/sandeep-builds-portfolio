@@ -1,18 +1,18 @@
 .lab {
-  background: var(--bg);
-  color: var(--fg);
+  background: transparent;
+  color: inherit;
 }
 
 .lab__intro {
   color: var(--fg-muted);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
   max-width: 56ch;
 }
 
 .lab__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .lab__note {

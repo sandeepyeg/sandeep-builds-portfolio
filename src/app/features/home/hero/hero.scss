@@ -1,8 +1,8 @@
 .hero {
   position: relative;
-  background: var(--bg);
-  color: var(--fg);
-  padding-block: var(--space-3xl) var(--space-2xl);
+  background: transparent;
+  color: inherit;
+  padding-block: var(--space-2xl) var(--space-xl);
   overflow: hidden;
 }
 
@@ -11,7 +11,7 @@
   grid-template-columns: 1.4fr 1fr;
   gap: var(--space-xl);
   align-items: center;
-  min-height: calc(100dvh - var(--header-height));
+  min-height: calc(90dvh - var(--header-height));
 }
 
 .hero__content {

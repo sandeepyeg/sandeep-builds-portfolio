@@ -1,13 +1,13 @@
 .featured-work {
-  background: var(--bg);
-  color: var(--fg);
+  background: transparent;
+  color: inherit;
 }
 
 .featured {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-xl);
-  align-items: center;
+  align-items: start;
 }
 
 .featured__visual {
@@ -15,6 +15,8 @@
   flex-direction: column;
   gap: var(--space-sm);
   color: color-mix(in srgb, var(--fg) 85%, transparent);
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-lg));
 }
 
 .featured__flow {
@@ -95,9 +97,97 @@
   margin-top: var(--space-xs);
 }
 
+.featured__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-block: var(--space-md);
+}
+
+.featured__step-card {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--border-subtle);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    transform 0.4s ease,
+    opacity 0.4s ease;
+  opacity: 0.45;
+  will-change: transform, opacity;
+
+  &.is-active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border-left-color: var(--accent);
+    transform: translateX(6px);
+  }
+}
+
+.featured__step-number {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-sm);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.featured__step-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.featured__step-title {
+  font-size: var(--text-body);
+  font-weight: 600;
+  margin: 0;
+}
+
+.featured__step-text {
+  font-size: var(--text-small);
+  color: var(--fg-muted);
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
+.flow-rect {
+  fill: rgba(255, 255, 255, 0.05);
+  stroke: var(--border-subtle);
+  transition:
+    fill 0.3s ease,
+    stroke 0.3s ease,
+    transform 0.3s ease;
+}
+
+.flow-label {
+  fill: var(--fg-muted);
+  transition: fill 0.3s ease;
+}
+
+.flow-path {
+  stroke: var(--border-subtle);
+  transition: stroke 0.3s ease;
+}
+
 @media (max-width: 900px) {
   .featured {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
+  }
+
+  .featured__visual {
+    position: static;
+  }
+
+  .featured__step-card {
+    opacity: 1 !important;
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-left-color: var(--accent) !important;
   }
 }
