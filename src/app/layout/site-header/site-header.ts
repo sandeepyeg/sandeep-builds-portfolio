@@ -10,7 +10,8 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, NavigationEnd, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 import { NAV_ITEMS, SITE_PROFILE } from '../../core/data/portfolio.data';
 import { AnimationService } from '../../core/services/animation.service';
 
@@ -25,6 +26,7 @@ export class SiteHeader {
   private readonly destroyRef = inject(DestroyRef);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly animationService = inject(AnimationService);
+  private readonly router = inject(Router);
 
   protected readonly profile = SITE_PROFILE;
   protected readonly navItems = NAV_ITEMS;
@@ -32,6 +34,7 @@ export class SiteHeader {
   protected readonly menuOpen = signal(false);
   protected readonly activeSection = signal<string>('');
   protected readonly menuId = 'mobile-menu';
+  private observer: IntersectionObserver | null = null;
 
   protected readonly headerClass = computed(() => ({
     'is-scrolled': this.scrolled(),
@@ -40,12 +43,20 @@ export class SiteHeader {
 
   constructor() {
     afterNextRender(() => {
-      this.setupScrollSpy();
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!prefersReduced) {
         this.animationService.setupMagneticHover('.site-header__nav-link', 0.2);
       }
     });
+
+    if (isPlatformBrowser(this.platformId)) {
+      // Re-initialize scroll spy when navigating between pages
+      this.router.events
+        .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+        .subscribe(() => {
+          setTimeout(() => this.setupScrollSpy(), 100);
+        });
+    }
 
     this.destroyRef.onDestroy(() => {
       if (isPlatformBrowser(this.platformId)) {
@@ -86,13 +97,23 @@ export class SiteHeader {
   }
 
   private setupScrollSpy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+
     const sections = this.navItems
       .map((item) => document.getElementById(item.fragment))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (!sections.length || !('IntersectionObserver' in window)) return;
+    if (!sections.length) {
+      this.activeSection.set('');
+      return;
+    }
 
-    const observer = new IntersectionObserver(
+    if (!('IntersectionObserver' in window)) return;
+
+    this.observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
@@ -103,8 +124,10 @@ export class SiteHeader {
       { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
     );
 
-    sections.forEach((section) => observer.observe(section));
-    this.destroyRef.onDestroy(() => observer.disconnect());
+    sections.forEach((section) => this.observer?.observe(section));
+    this.destroyRef.onDestroy(() => {
+      this.observer?.disconnect();
+    });
   }
 
   private lockScroll(): void {
