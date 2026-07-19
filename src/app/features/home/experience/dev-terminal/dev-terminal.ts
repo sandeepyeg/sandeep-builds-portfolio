@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  viewChild,
-  signal,
-  afterNextRender,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, viewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -19,14 +12,8 @@ interface TerminalLine {
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div
-      class="terminal"
-      (click)="focusInput()"
-      tabindex="0"
-      (keydown)="focusInput()"
-      role="button"
-      aria-label="Interactive developer shell"
-    >
+    <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+    <div class="terminal" (click)="focusInput()">
       <!-- Window Title Bar -->
       <div class="terminal__header">
         <div class="terminal__dots">
@@ -70,6 +57,7 @@ interface TerminalLine {
             autocorrect="off"
             autocapitalize="off"
             spellcheck="false"
+            aria-label="Terminal command input"
           />
         </div>
       </div>
@@ -85,12 +73,6 @@ export class DevTerminal {
   protected readonly history = signal<TerminalLine[]>([]);
   protected inputValue = '';
   protected currentInputValue = signal('');
-
-  constructor() {
-    afterNextRender(() => {
-      this.focusInput();
-    });
-  }
 
   protected focusInput(): void {
     const inputEl = this.hiddenInput()?.nativeElement;

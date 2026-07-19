@@ -30,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
               </div>
               <ol role="list" class="timeline">
                 @for (job of experience; track job.role) {
-                  <li class="timeline__item reveal" [class.timeline__item--current]="job.current">
+                  <li class="timeline__item" [class.timeline__item--current]="job.current">
                     <div class="timeline__marker" aria-hidden="true">
                       <span class="timeline__dot"></span>
                     </div>
@@ -44,24 +44,24 @@ gsap.registerPlugin(ScrollTrigger);
                 }
               </ol>
             </div>
-
-            <div class="education">
-              <p class="eyebrow">Education</p>
-              <ul role="list" class="education__list">
-                @for (edu of education; track edu.qualification) {
-                  <li class="education__item">
-                    <span class="education__qual">{{ edu.qualification }}</span>
-                    <span class="education__inst">{{ edu.institution }}</span>
-                  </li>
-                }
-              </ul>
-            </div>
           </div>
 
           <!-- Right Column: Interactive Terminal Simulator -->
           <div class="experience__right">
             <app-dev-terminal />
           </div>
+        </div>
+
+        <div class="education">
+          <p class="eyebrow">Education</p>
+          <ul role="list" class="education__list">
+            @for (edu of education; track edu.qualification) {
+              <li class="education__item">
+                <span class="education__qual">{{ edu.qualification }}</span>
+                <span class="education__inst">{{ edu.institution }}</span>
+              </li>
+            }
+          </ul>
         </div>
       </div>
     </section>
@@ -158,6 +158,9 @@ export class Experience {
           });
         });
       });
+
+      // Recalculate ScrollTrigger offsets once layout settles
+      ScrollTrigger.refresh();
 
       this.destroyRef.onDestroy(() => {
         if (this.ctx) {
