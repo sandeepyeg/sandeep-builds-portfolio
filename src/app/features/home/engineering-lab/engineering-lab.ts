@@ -15,7 +15,6 @@ import {
   PROJECTS,
 } from '../../../core/data/portfolio.data';
 import { PortfolioProject } from '../../../core/models/portfolio.models';
-import { DevTerminal } from './dev-terminal/dev-terminal';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,15 +22,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-engineering-lab',
-  imports: [SectionHeading, ProjectCard, DevTerminal],
+  imports: [SectionHeading, ProjectCard],
   template: `
     <section class="section lab" id="lab" data-theme="cobalt">
       <div class="container">
         <app-section-heading eyebrow="Engineering Lab" [heading]="heading" />
         <p class="lab__intro lead">{{ intro }}</p>
-
-        <!-- Interactive Terminal Simulator -->
-        <app-dev-terminal />
 
         <div class="lab__grid">
           @for (project of labProjects(); track project.slug) {

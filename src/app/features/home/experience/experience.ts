@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { SectionHeading } from '../../../shared/components/section-heading/section-heading';
 import { EDUCATION, EXPERIENCE, EXPERIENCE_HEADING } from '../../../core/data/portfolio.data';
+import { DevTerminal } from './dev-terminal/dev-terminal';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-experience',
-  imports: [SectionHeading],
+  imports: [SectionHeading, DevTerminal],
   template: `
     <section class="section experience" id="experience" data-theme="ink">
       <div class="container">
@@ -52,6 +53,9 @@ gsap.registerPlugin(ScrollTrigger);
             }
           </ul>
         </div>
+
+        <!-- Interactive Terminal Simulator -->
+        <app-dev-terminal />
       </div>
     </section>
   `,
