@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PROJECTS, HAS_RESUME_PDF, CONTACT_LINKS } from './portfolio.data';
+import { PROJECTS, PERSONAL_PROJECTS, HAS_RESUME_PDF, CONTACT_LINKS } from './portfolio.data';
 import { PortfolioProject } from '../models/portfolio.models';
 
 describe('Portfolio Data', () => {
@@ -39,6 +39,16 @@ describe('Portfolio Data', () => {
       PROJECTS.forEach((p: PortfolioProject) => {
         expect(p.technologies.length).toBeGreaterThan(0);
       });
+    });
+  });
+
+  describe('PERSONAL_PROJECTS', () => {
+    it('features YEG Neighbourhood Lens first with demo and source links', () => {
+      const firstProject = PERSONAL_PROJECTS[0];
+
+      expect(firstProject.slug).toBe('yeg-neighbourhood-lens');
+      expect(firstProject.liveUrl).toBe('https://yeglens.sandeepbuilds.com');
+      expect(firstProject.githubUrl).toContain('github.com');
     });
   });
 

@@ -22,7 +22,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
       <a class="skip-link" href="#main">Skip to content</a>
       <app-code-cursor />
       <app-site-header />
-      <main id="main" class="page-shell__main">
+      <main id="main" class="page-shell__main" tabindex="-1">
         <ng-content />
       </main>
       <app-site-footer />

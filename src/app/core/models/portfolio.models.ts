@@ -22,6 +22,7 @@ export interface PersonalProject {
   readonly technologies: readonly string[];
   readonly language: string;
   readonly githubUrl?: string; // omit for private/professional projects
+  readonly liveUrl?: string;
   readonly sourceLinks?: readonly {
     readonly label: string;
     readonly url: string;
@@ -33,6 +34,12 @@ export interface PersonalProject {
   readonly keyPoints?: readonly string[];
   readonly role?: string;
   readonly architecture?: readonly string[];
+  readonly visualStats?: readonly {
+    readonly label: string;
+    readonly value: string;
+    readonly detail: string;
+    readonly tone?: 'green' | 'blue' | 'amber' | 'violet';
+  }[];
   readonly demoValue?: readonly string[];
   readonly nextSteps?: readonly string[];
 }

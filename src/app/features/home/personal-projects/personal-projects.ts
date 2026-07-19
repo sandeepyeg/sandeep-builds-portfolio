@@ -41,7 +41,27 @@ gsap.registerPlugin(ScrollTrigger);
                   class="pp-card__lang-dot pp-card__lang-dot--{{ getLangKey(project.language) }}"
                 ></span>
                 <span class="pp-card__lang">{{ project.language }}</span>
-                @if (project.isPrivate) {
+                @if (project.liveUrl) {
+                  <a
+                    [href]="project.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pp-card__badge pp-card__badge--demo"
+                    aria-label="Open {{ project.title }} demo"
+                  >
+                    <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M7 17 17 7M9 7h8v8"
+                      />
+                    </svg>
+                    Demo
+                  </a>
+                } @else if (project.isPrivate) {
                   <span class="pp-card__badge pp-card__badge--private">
                     <svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true">
                       <path
@@ -54,7 +74,7 @@ gsap.registerPlugin(ScrollTrigger);
                     </svg>
                     Private
                   </span>
-                } @else {
+                } @else if (project.githubUrl) {
                   <a
                     [href]="project.githubUrl"
                     target="_blank"
@@ -93,24 +113,70 @@ gsap.registerPlugin(ScrollTrigger);
                 }
               </ul>
 
-              <button
-                type="button"
-                class="pp-card__button"
-                (click)="openProject(project)"
-                aria-haspopup="dialog"
-              >
-                View Details
-                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 12h14M13 6l6 6-6 6"
-                  />
-                </svg>
-              </button>
+              <div class="pp-card__actions">
+                <button
+                  type="button"
+                  class="pp-card__button"
+                  (click)="openProject(project)"
+                  aria-haspopup="dialog"
+                >
+                  View Details
+                  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14M13 6l6 6-6 6"
+                    />
+                  </svg>
+                </button>
+
+                @if (project.liveUrl) {
+                  <a
+                    [href]="project.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pp-card__button pp-card__button--demo"
+                    aria-label="Open {{ project.title }} demo"
+                  >
+                    Demo
+                    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M7 17 17 7M9 7h8v8"
+                      />
+                    </svg>
+                  </a>
+                }
+
+                @if (project.githubUrl) {
+                  <a
+                    [href]="project.githubUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pp-card__button pp-card__button--source"
+                    aria-label="View {{ project.title }} source code"
+                  >
+                    Source Code
+                    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M7 17 17 7M9 7h8v8"
+                      />
+                    </svg>
+                  </a>
+                }
+              </div>
             </article>
           }
         </div>
@@ -173,7 +239,7 @@ gsap.registerPlugin(ScrollTrigger);
                   </div>
                   <div>
                     <span>Scope</span>
-                    <strong>{{ project.isPrivate ? 'Private' : 'Open source' }}</strong>
+                    <strong>{{ scopeLabel(project) }}</strong>
                   </div>
                   <div>
                     <span>Focus</span>
@@ -250,10 +316,31 @@ gsap.registerPlugin(ScrollTrigger);
                 </section>
               }
 
+              @if (project.visualStats?.length) {
+                <section class="project-modal__section project-modal__section--stats">
+                  <div class="project-modal__section-head">
+                    <span>02</span>
+                    <h4>Project Signals</h4>
+                  </div>
+                  <div class="project-modal__stats" aria-label="Project data highlights">
+                    @for (stat of project.visualStats; track stat.label; let i = $index) {
+                      <article [class]="'project-stat project-stat--' + (stat.tone ?? 'green')">
+                        <span>{{ stat.label }}</span>
+                        <strong>{{ stat.value }}</strong>
+                        <p>{{ stat.detail }}</p>
+                        <div class="project-stat__bar" aria-hidden="true">
+                          <i [style.width.%]="statWidth(i)"></i>
+                        </div>
+                      </article>
+                    }
+                  </div>
+                </section>
+              }
+
               @if (project.architecture?.length) {
                 <section class="project-modal__section">
                   <div class="project-modal__section-head">
-                    <span>02</span>
+                    <span>03</span>
                     <h4>Architecture Notes</h4>
                   </div>
                   <div class="project-modal__architecture">
@@ -269,7 +356,7 @@ gsap.registerPlugin(ScrollTrigger);
 
               <section class="project-modal__section project-modal__section--story">
                 <div class="project-modal__section-head">
-                  <span>03</span>
+                  <span>04</span>
                   <h4>Project Story</h4>
                 </div>
                 <div class="project-modal__content">
@@ -282,7 +369,7 @@ gsap.registerPlugin(ScrollTrigger);
               @if (project.keyPoints?.length) {
                 <section class="project-modal__section">
                   <div class="project-modal__section-head">
-                    <span>04</span>
+                    <span>05</span>
                     <h4>What It Demonstrates</h4>
                   </div>
                   <ul role="list" class="project-modal__points">
@@ -297,7 +384,7 @@ gsap.registerPlugin(ScrollTrigger);
                 @if (project.demoValue?.length) {
                   <div class="project-modal__section">
                     <div class="project-modal__section-head">
-                      <span>05</span>
+                      <span>06</span>
                       <h4>Portfolio Value</h4>
                     </div>
                     <ul role="list" class="project-modal__points project-modal__points--single">
@@ -311,7 +398,7 @@ gsap.registerPlugin(ScrollTrigger);
                 @if (project.nextSteps?.length) {
                   <div class="project-modal__section">
                     <div class="project-modal__section-head">
-                      <span>06</span>
+                      <span>07</span>
                       <h4>Next Improvements</h4>
                     </div>
                     <ul role="list" class="project-modal__points project-modal__points--single">
@@ -325,7 +412,7 @@ gsap.registerPlugin(ScrollTrigger);
 
               <section class="project-modal__section project-modal__section--tech">
                 <div class="project-modal__section-head">
-                  <span>07</span>
+                  <span>08</span>
                   <h4>Technology</h4>
                 </div>
                 <div class="project-modal__tech-layout">
@@ -344,9 +431,9 @@ gsap.registerPlugin(ScrollTrigger);
             </div>
 
             <footer class="project-modal__footer">
-              @if (getSourceLinks(project).length) {
+              @if (getProjectLinks(project).length) {
                 <div class="project-modal__links" aria-label="Project source links">
-                  @for (link of getSourceLinks(project); track link.url) {
+                  @for (link of getProjectLinks(project); track link.url) {
                     <a
                       class="btn btn--ghost"
                       [href]="link.url"
@@ -409,6 +496,14 @@ export class PersonalProjects {
     return map[lang] ?? 'default';
   }
 
+  protected scopeLabel(project: PersonalProject): string {
+    if (project.isPrivate) return 'Private';
+    if (project.liveUrl && project.githubUrl) return 'Public demo + source';
+    if (project.liveUrl) return 'Public demo';
+    if (project.githubUrl) return 'Open source';
+    return 'Portfolio project';
+  }
+
   protected openProject(project: PersonalProject): void {
     this.activeSlug.set(project.slug);
     this.scrollService.stop();
@@ -459,12 +554,24 @@ export class PersonalProjects {
     return `M${startX} ${startY} C${midX} ${startY}, ${midX} ${endY}, ${endX} ${endY}`;
   }
 
-  protected getSourceLinks(project: PersonalProject): readonly { label: string; url: string }[] {
-    if (project.sourceLinks?.length) {
-      return project.sourceLinks;
+  protected statWidth(index: number): number {
+    return [92, 84, 76, 68][index % 4];
+  }
+
+  protected getProjectLinks(project: PersonalProject): readonly { label: string; url: string }[] {
+    const links: { label: string; url: string }[] = [];
+
+    if (project.liveUrl) {
+      links.push({ label: 'Demo', url: project.liveUrl });
     }
 
-    return project.githubUrl ? [{ label: 'GitHub', url: project.githubUrl }] : [];
+    if (project.sourceLinks?.length) {
+      links.push(...project.sourceLinks);
+    } else if (project.githubUrl) {
+      links.push({ label: 'Source Code', url: project.githubUrl });
+    }
+
+    return links;
   }
 
   @HostListener('document:keydown.escape')

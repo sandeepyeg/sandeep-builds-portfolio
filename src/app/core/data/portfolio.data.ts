@@ -335,6 +335,101 @@ export const PERSONAL_PROJECTS_INTRO =
 
 const PERSONAL_PROJECTS_SOURCE: readonly PersonalProject[] = [
   {
+    slug: 'yeg-neighbourhood-lens',
+    title: 'YEG Neighbourhood Lens',
+    description:
+      'A production-minded Edmonton neighbourhood intelligence app that turns open civic datasets into housing, mobility, parks, permit, service-request and lifestyle signals for comparing where to live.',
+    technologies: [
+      '.NET Aspire',
+      '.NET 10',
+      'Angular 22',
+      'PostgreSQL',
+      'PostGIS',
+      'Redis',
+      'RabbitMQ',
+      'Docker',
+      'Open Data',
+      'Gemini API',
+    ],
+    language: 'C#',
+    githubUrl: 'https://github.com/sandeepyeg/YEG-neighbourhood-lens',
+    liveUrl: 'https://yeglens.sandeepbuilds.com',
+    highlight: 'Open data · Civic intelligence product',
+    role: 'Independent full-stack product covering data import workers, PostGIS aggregation, resilient API contracts, Angular UX, AI-assisted neighbourhood briefs and production-safe refresh behavior.',
+    details: [
+      'YEG Neighbourhood Lens is a full-stack civic-data product built around a real local question: how can people compare Edmonton neighbourhoods without manually reading dozens of open-data tables?',
+      'The app imports City of Edmonton datasets into PostgreSQL/PostGIS, cleans and aggregates them by neighbourhood, calculates percentiles, and serves prepared API responses to an Angular frontend.',
+      'The system is intentionally built like a production app, not a static demo. The API applies migrations, a worker refreshes datasets on schedules, and failed imports keep the last good data instead of publishing nulls or fake zeros.',
+      'The UI presents housing assessment trends, parks and playgrounds, transit access, permits, service requests, trees, naturalized areas, licensed pets, libraries, schools and data-source freshness in plain language.',
+      'AI-generated neighbourhood briefs are supported with guardrails. The app can fall back cleanly when model calls fail, and the UI avoids exposing internal errors to users.',
+      'A major engineering challenge was data trust. Some civic datasets are current, some are historical, some have missing fields, and some only support estimates. The product has to show useful information while being honest about sample size and source limits.',
+      'Recent hardening added smart import behavior: restarts skip fresh datasets, important sources reject empty responses, source refreshes run in transactions, and the UI keeps last good data when Edmonton endpoints fail.',
+      'This project demonstrates full-stack product ownership across architecture, data modelling, import reliability, API design, Angular UX, testing, local orchestration and deployment planning.',
+    ],
+    flow: [
+      'Open Data',
+      'Worker Imports',
+      'PostGIS Store',
+      'Metric Aggregation',
+      'API Contracts',
+      'Angular UI',
+    ],
+    architecture: [
+      '.NET Aspire coordinates API, worker, PostgreSQL/PostGIS, Redis and RabbitMQ for realistic local development.',
+      'Worker imports civic datasets on source-appropriate schedules and wraps refreshes in transactions so bad imports do not wipe good data.',
+      'PostgreSQL/PostGIS stores neighbourhood boundaries, civic points, geometry-backed assets and aggregated metrics.',
+      'ASP.NET Core API serves prepared neighbourhood detail, comparison, map, source freshness and personal-fit responses.',
+      'Angular 22 frontend turns raw metrics into readable cards, trends, comparisons, source notes and resilient empty/error states.',
+      'AI summary generation supports multiple model tiers and falls back to deterministic summaries when providers fail.',
+    ],
+    visualStats: [
+      {
+        label: 'Neighbourhoods',
+        value: '407',
+        detail: 'Residential and civic areas aggregated into comparable profiles',
+        tone: 'green',
+      },
+      {
+        label: 'Datasets',
+        value: '23+',
+        detail: 'Assessments, parks, transit, permits, trees, pets and service requests',
+        tone: 'blue',
+      },
+      {
+        label: 'Import Safety',
+        value: 'Transactional',
+        detail: 'Failed refreshes keep last good data instead of publishing nulls',
+        tone: 'amber',
+      },
+      {
+        label: 'Verification',
+        value: '52 tests',
+        detail: 'Unit, integration and data-quality checks covering core behavior',
+        tone: 'violet',
+      },
+    ],
+    keyPoints: [
+      'Production-safe background data imports',
+      'PostGIS civic-data aggregation',
+      'Angular neighbourhood comparison UI',
+      'Source freshness and data-quality handling',
+      'AI brief generation with graceful fallback',
+      'Automated tests for import safety and API behavior',
+    ],
+    demoValue: [
+      'Shows a real local product idea, not a toy CRUD app',
+      'Demonstrates full-stack architecture across API, worker, database, frontend and deployment',
+      'Highlights data-quality judgment: old data, missing fields, low samples and broken imports are handled honestly',
+      'Strong portfolio story for .NET, Angular, Postgres/PostGIS, background workers and AI-assisted product features',
+    ],
+    nextSteps: [
+      'Deploy demo at yeglens.sandeepbuilds.com with production environment variables and scheduled worker behavior',
+      'Add a public project README with data-source architecture and screenshots',
+      'Add map-level comparison views and saved neighbourhood shortlists',
+      'Add a lightweight admin screen for import status and source health',
+    ],
+  },
+  {
     slug: 'project-jupiter',
     title: 'Project Jupiter',
     description:
@@ -717,6 +812,7 @@ const PERSONAL_PROJECTS_SOURCE: readonly PersonalProject[] = [
 ];
 
 const PERSONAL_PROJECT_PRIORITY: readonly string[] = [
+  'yeg-neighbourhood-lens',
   'project-jupiter',
   'lite-queue-net',
   'members-platform',
