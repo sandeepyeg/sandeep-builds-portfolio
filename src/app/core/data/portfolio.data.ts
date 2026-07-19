@@ -45,7 +45,7 @@ export const HERO = {
   supporting:
     'I design, deploy and support enterprise applications using .NET, Angular, Azure, AWS and event-driven architecture.',
   statusLine: 'Software Developer II · Edmonton, Alberta',
-  availability: 'Open to intermediate full-stack and cloud engineering opportunities in Canada.',
+  availability: 'Focused on full-stack, cloud, and platform engineering solutions.',
   primaryActions: [
     { label: 'View Selected Work', fragment: 'work' },
     { label: 'GitHub', href: SITE_PROFILE.githubUrl, external: true },
@@ -318,7 +318,7 @@ export const CONTACT_LINKS: readonly ContactLink[] = [
 
 export const CONTACT = {
   heading: "Let's build something reliable.",
-  copy: 'I\u2019m interested in full-stack, cloud and platform engineering opportunities where I can contribute to real products and continue growing as an engineer.',
+  copy: 'I focus on full-stack, cloud, and platform engineering, building clean and maintainable applications with modern technologies.',
 };
 
 // Toggle to true once a real resume PDF exists at public/documents/SANDEEP JOHAL RESUME.pdf.
