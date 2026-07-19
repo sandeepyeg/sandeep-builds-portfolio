@@ -17,7 +17,9 @@ export const SITE_PROFILE: SiteProfile = {
   monogram: 'SJ',
   location: 'Edmonton, Alberta, Canada',
   role: 'Software Developer II · Edmonton, Alberta',
-  email: 'johalsandeep64@gmail.com',
+  get email() {
+    return atob('am9oYWxzYW5kZWVwNjRAZ21haWwuY29t');
+  },
   linkedinUrl: 'https://linkedin.com/in/johalsandeep',
   linkedinHandle: 'linkedin.com/in/johalsandeep',
   githubUrl: 'https://github.com/sandeepyeg',
